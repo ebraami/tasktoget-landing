@@ -7,25 +7,34 @@
 <title>Task2Get — Earn Rewards</title>
 
 <style>
+
 /* =========================================================
    VARIABLES
 ========================================================= */
+
 :root {
     --navy: #102d5c;
     --navy-dark: #0a2148;
     --blue: #2161df;
     --blue-hover: #174fc2;
+
     --white: #ffffff;
     --bg: #f6f8fc;
+
     --text: #10203a;
     --muted: #64748b;
+
     --border: #dde5ef;
-    --shadow: 0 18px 45px rgba(16, 45, 92, 0.09);
+
+    --shadow:
+        0 18px 45px rgba(16,45,92,.09);
 }
+
 
 /* =========================================================
    RESET
 ========================================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -37,12 +46,22 @@ html {
 }
 
 body {
-    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
-                 Roboto, Arial, sans-serif;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
     background: var(--bg);
     color: var(--text);
+
     line-height: 1.5;
+
     overflow-x: hidden;
+
     -webkit-font-smoothing: antialiased;
 }
 
@@ -56,59 +75,93 @@ img {
     max-width: 100%;
 }
 
+
 /* =========================================================
    NAVBAR
 ========================================================= */
+
 .navbar {
     height: 76px;
+
     position: relative;
+
     z-index: 100;
+
     background: #fff;
-    border-bottom: 1px solid #e8edf4;
+
+    border-bottom:
+        1px solid #e8edf4;
 }
 
 .nav-inner {
-    width: min(100% - 40px, 1320px);
+    width:
+        min(100% - 40px, 1320px);
+
     height: 100%;
+
     margin: 0 auto;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 }
 
+
+/* =========================================================
+   LOGO
+========================================================= */
+
 .logo {
     display: flex;
+
     align-items: center;
+
     gap: 11px;
+
     font-weight: 900;
+
     font-size: 23px;
+
     letter-spacing: -1.2px;
+
     color: var(--navy);
 }
 
 .logo-mark {
     width: 40px;
     height: 40px;
+
     position: relative;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     border-radius: 7px;
+
     background: var(--navy);
+
     color: white;
+
     font-size: 17px;
+
     font-weight: 900;
 }
 
 .logo-mark::after {
     content: "2";
+
     position: absolute;
+
     right: 5px;
     bottom: 3px;
+
     font-size: 8px;
+
     color: #77a4ff;
 }
 
@@ -116,15 +169,24 @@ img {
     color: var(--blue);
 }
 
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
 .nav-links {
     display: flex;
+
     align-items: center;
+
     gap: 34px;
 }
 
 .nav-links a {
     font-size: 13px;
+
     font-weight: 700;
+
     color: #64748b;
 }
 
@@ -134,142 +196,208 @@ img {
 
 .nav-links .nav-cta {
     padding: 13px 20px;
+
     border-radius: 7px;
+
     background: var(--navy);
+
     color: #fff;
 }
 
 .nav-links .nav-cta:hover {
     color: #fff;
+
     background: var(--blue);
 }
+
 
 /* =========================================================
    HERO
 ========================================================= */
+
 .hero {
     position: relative;
+
     min-height: 725px;
+
     overflow: hidden;
+
     background: #fff;
 }
 
-/*
-   Background is separate from the content.
-   This makes desktop/mobile positioning much easier.
-*/
+
+/* =========================================================
+   HERO BACKGROUND
+========================================================= */
+
 .hero-background {
     position: absolute;
+
     inset: 0;
+
     z-index: 0;
 
-    background-image: url("img/herobanner.png");
+    background-image:
+        url("img/herobanner.png");
+
     background-size: cover;
-    background-position: center right;
+
+    background-position:
+        center right;
+
     background-repeat: no-repeat;
 }
 
-/*
-   Desktop fade.
-   Strong white on the left, transparent over the girl.
-*/
+
+/* =========================================================
+   HERO FADE
+========================================================= */
+
 .hero-background::after {
     content: "";
+
     position: absolute;
+
     inset: 0;
 
     background:
         linear-gradient(
             90deg,
+
             #ffffff 0%,
-            rgba(255,255,255,0.99) 20%,
-            rgba(255,255,255,0.94) 32%,
-            rgba(255,255,255,0.78) 43%,
-            rgba(255,255,255,0.43) 54%,
-            rgba(255,255,255,0.08) 67%,
+
+            rgba(255,255,255,.99) 20%,
+
+            rgba(255,255,255,.94) 32%,
+
+            rgba(255,255,255,.78) 43%,
+
+            rgba(255,255,255,.43) 54%,
+
+            rgba(255,255,255,.08) 67%,
+
             rgba(255,255,255,0) 78%
         );
 }
 
-/* subtle grid */
+
+/* =========================================================
+   GRID
+========================================================= */
+
 .hero-grid {
     position: absolute;
+
     inset: 0;
+
     z-index: 1;
+
     pointer-events: none;
 
     background-image:
-        linear-gradient(rgba(16,45,92,.022) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(16,45,92,.022) 1px, transparent 1px);
+        linear-gradient(
+            rgba(16,45,92,.022) 1px,
+            transparent 1px
+        ),
 
-    background-size: 58px 58px;
+        linear-gradient(
+            90deg,
+            rgba(16,45,92,.022) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        58px 58px;
 }
 
+
 /* =========================================================
-   HERO CONTENT
+   HERO INNER
 ========================================================= */
+
 .hero-inner {
     position: relative;
+
     z-index: 5;
 
-    width: min(100% - 40px, 1320px);
+    width:
+        min(100% - 40px, 1320px);
+
     min-height: 725px;
+
     margin: 0 auto;
 
     display: flex;
+
     align-items: center;
 }
 
-/*
-   EVERYTHING belongs here now:
-   kicker
-   headline
-   description
-   buttons
-   note
 
-   Nothing is absolutely positioned.
-*/
+/* =========================================================
+   HERO COPY
+========================================================= */
+
 .hero-copy {
     width: 610px;
+
     max-width: 48%;
+
     margin-top: -5px;
 }
 
+
+/* =========================================================
+   KICKER
+========================================================= */
+
 .hero-kicker {
     display: flex;
+
     align-items: center;
+
     gap: 9px;
 
     margin-bottom: 26px;
 
     color: var(--blue);
+
     font-size: 11px;
+
     line-height: 1;
+
     font-weight: 900;
+
     letter-spacing: 1.6px;
+
     text-transform: uppercase;
 }
 
 .hero-kicker-dot {
     width: 8px;
     height: 8px;
+
     flex: 0 0 8px;
 
     border-radius: 50%;
+
     background: var(--blue);
 }
 
+
 /* =========================================================
-   HEADLINE
+   HERO TITLE
 ========================================================= */
+
 .hero-title {
     color: var(--navy);
 
-    font-size: clamp(52px, 4.4vw, 72px);
+    font-size:
+        clamp(52px,4.4vw,72px);
+
     line-height: .98;
 
     letter-spacing: -4px;
+
     font-weight: 950;
 }
 
@@ -277,12 +405,14 @@ img {
     display: block;
 }
 
-/*
-   Separate row reserved for animated text.
-   This prevents buttons from jumping upward/downward.
-*/
+
+/* =========================================================
+   TYPING LINE
+========================================================= */
+
 .typing-line {
     display: block;
+
     min-height: 1.08em;
 
     margin-top: 5px;
@@ -294,13 +424,18 @@ img {
     display: inline;
 }
 
-/* cursor */
+
+/* =========================================================
+   CURSOR
+========================================================= */
+
 .typing-word::after {
     content: "";
 
     display: inline-block;
 
     width: 3px;
+
     height: .78em;
 
     margin-left: 6px;
@@ -309,24 +444,31 @@ img {
 
     background: var(--blue);
 
-    animation: blink .8s infinite;
+    animation:
+        blink .8s infinite;
 }
 
 @keyframes blink {
-    0%, 45% {
+
+    0%,
+    45% {
         opacity: 1;
     }
 
-    46%, 100% {
+    46%,
+    100% {
         opacity: 0;
     }
 }
 
+
 /* =========================================================
-   HERO DESCRIPTION
+   DESCRIPTION
 ========================================================= */
+
 .hero-description {
     width: 500px;
+
     max-width: 100%;
 
     margin-top: 21px;
@@ -334,37 +476,42 @@ img {
     color: #53657d;
 
     font-size: 15px;
+
     line-height: 1.65;
 }
+
 
 /* =========================================================
    HERO BUTTONS
 ========================================================= */
+
 .hero-actions {
     display: flex;
+
     align-items: center;
+
     gap: 11px;
 
     margin-top: 26px;
 
-    /*
-       CRITICAL:
-       no absolute positioning.
-    */
     position: static;
 }
 
 .btn {
     min-height: 50px;
+
     padding: 0 23px;
 
     display: inline-flex;
+
     align-items: center;
+
     justify-content: center;
 
     border-radius: 7px;
 
     font-size: 12px;
+
     font-weight: 850;
 
     transition:
@@ -375,41 +522,60 @@ img {
 
 .btn-primary {
     background: var(--blue);
-    border: 1px solid var(--blue);
+
+    border:
+        1px solid var(--blue);
+
     color: #fff;
 
-    box-shadow: 0 10px 25px rgba(33,97,223,.16);
+    box-shadow:
+        0 10px 25px rgba(33,97,223,.16);
 }
 
 .btn-primary:hover {
     background: var(--blue-hover);
+
     border-color: var(--blue-hover);
-    transform: translateY(-2px);
+
+    transform:
+        translateY(-2px);
 }
 
 .btn-secondary {
-    background: rgba(255,255,255,.94);
-    border: 1px solid #d4deeb;
+    background:
+        rgba(255,255,255,.94);
+
+    border:
+        1px solid #d4deeb;
+
     color: var(--navy);
 }
 
 .btn-secondary:hover {
     background: #fff;
+
     border-color: #aebdd1;
-    transform: translateY(-2px);
+
+    transform:
+        translateY(-2px);
 }
+
 
 /* =========================================================
    HERO NOTE
 ========================================================= */
+
 .hero-note {
     display: flex;
+
     align-items: center;
+
     gap: 8px;
 
     margin-top: 17px;
 
     color: #74849a;
+
     font-size: 10px;
 
     position: static;
@@ -418,43 +584,61 @@ img {
 .hero-note-dot {
     width: 6px;
     height: 6px;
+
     flex: 0 0 6px;
 
     border-radius: 50%;
+
     background: var(--blue);
 }
 
+
 /* =========================================================
-   TRUST STRIP
+   TRUST
 ========================================================= */
+
 .trust-wrap {
     background: #fff;
+
     padding: 0 20px;
 }
 
 .trust-strip {
     position: relative;
+
     z-index: 10;
 
-    width: min(100%, 1050px);
-    margin: -30px auto 0;
+    width:
+        min(100%,1050px);
+
+    margin:
+        -30px auto 0;
 
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
 
     padding: 20px;
 
     background: #fff;
-    border: 1px solid var(--border);
+
+    border:
+        1px solid var(--border);
+
     border-radius: 10px;
 
     box-shadow: var(--shadow);
 }
 
 .trust-item {
-    padding: 3px 20px;
+    padding:
+        3px 20px;
+
     text-align: center;
-    border-right: 1px solid var(--border);
+
+    border-right:
+        1px solid var(--border);
 }
 
 .trust-item:last-child {
@@ -463,41 +647,59 @@ img {
 
 .trust-item strong {
     display: block;
+
     color: var(--navy);
+
     font-size: 12px;
 }
 
 .trust-item span {
     display: block;
+
     margin-top: 3px;
+
     color: var(--muted);
+
     font-size: 10px;
 }
 
+
 /* =========================================================
-   GENERIC SECTIONS
+   SECTIONS
 ========================================================= */
+
 .section {
-    width: min(100% - 40px, 1180px);
+    width:
+        min(100% - 40px,1180px);
+
     margin: 0 auto;
-    padding: 100px 0;
+
+    padding:
+        100px 0;
 }
 
 .section-header {
     max-width: 680px;
-    margin: 0 auto 44px;
+
+    margin:
+        0 auto 44px;
+
     text-align: center;
 }
 
 .section-kicker {
     display: block;
+
     margin-bottom: 10px;
 
     color: var(--blue);
 
     font-size: 9px;
+
     font-weight: 900;
+
     letter-spacing: 1.6px;
+
     text-transform: uppercase;
 }
 
@@ -505,34 +707,49 @@ img {
     color: var(--navy);
 
     font-size: 39px;
+
     line-height: 1.08;
 
     letter-spacing: -2px;
+
     font-weight: 900;
 }
 
 .section-header p {
     margin-top: 10px;
+
     color: var(--muted);
+
     font-size: 13px;
 }
+
 
 /* =========================================================
    REWARDS
 ========================================================= */
+
 .rewards-section-wrap {
     margin-top: 80px;
+
     background: var(--bg);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+
+    border-top:
+        1px solid var(--border);
+
+    border-bottom:
+        1px solid var(--border);
 }
 
 .reward-grid {
     max-width: 1080px;
+
     margin: 0 auto;
 
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap: 22px;
 }
 
@@ -540,7 +757,10 @@ img {
     padding: 12px;
 
     background: #fff;
-    border: 1px solid #dce4ef;
+
+    border:
+        1px solid #dce4ef;
+
     border-radius: 12px;
 
     transition:
@@ -549,7 +769,8 @@ img {
 }
 
 .reward-card:hover {
-    transform: translateY(-6px);
+    transform:
+        translateY(-6px);
 
     box-shadow:
         0 20px 45px rgba(16,45,92,.12);
@@ -559,17 +780,21 @@ img {
     height: 240px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     overflow: hidden;
 
     background: #f0f3f8;
+
     border-radius: 8px;
 }
 
 .reward-image {
     width: 100%;
+
     height: 100%;
 
     padding: 17px;
@@ -578,12 +803,15 @@ img {
 }
 
 .reward-info {
-    padding: 17px 5px 8px;
+    padding:
+        17px 5px 8px;
 }
 
 .reward-info h3 {
     color: var(--navy);
+
     font-size: 18px;
+
     font-weight: 900;
 }
 
@@ -591,6 +819,7 @@ img {
     margin-top: 4px;
 
     color: var(--muted);
+
     font-size: 11px;
 }
 
@@ -602,22 +831,29 @@ img {
     color: var(--blue);
 
     font-size: 11px;
+
     font-weight: 850;
 }
 
 .reward-footer {
     max-width: 1080px;
-    margin: 22px auto 0;
 
-    padding: 18px 20px;
+    margin:
+        22px auto 0;
+
+    padding:
+        18px 20px;
 
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
     border-radius: 8px;
 
     background: var(--navy);
+
     color: #fff;
 }
 
@@ -626,16 +862,23 @@ img {
 }
 
 .reward-footer span {
-    color: rgba(255,255,255,.62);
+    color:
+        rgba(255,255,255,.62);
+
     font-size: 10px;
 }
+
 
 /* =========================================================
    HOW IT WORKS
 ========================================================= */
+
 .steps {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap: 15px;
 }
 
@@ -644,15 +887,20 @@ img {
 
     background: #fff;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius: 9px;
 
     transition: .2s;
 }
 
 .step:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow);
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        var(--shadow);
 }
 
 .step-number {
@@ -662,15 +910,19 @@ img {
     margin-bottom: 20px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     border-radius: 7px;
 
     background: var(--navy);
+
     color: #8eb6ff;
 
     font-size: 10px;
+
     font-weight: 900;
 }
 
@@ -684,20 +936,25 @@ img {
 
 .step p {
     color: var(--muted);
+
     font-size: 12px;
 }
 
+
 /* =========================================================
-   LARGE CTA
+   CTA
 ========================================================= */
+
 .cta {
-    padding: 70px 25px;
+    padding:
+        70px 25px;
 
     text-align: center;
 
     border-radius: 11px;
 
     background: var(--navy);
+
     color: #fff;
 
     box-shadow:
@@ -706,6 +963,7 @@ img {
 
 .cta h2 {
     font-size: 38px;
+
     line-height: 1.1;
 
     letter-spacing: -2px;
@@ -714,26 +972,36 @@ img {
 .cta p {
     max-width: 500px;
 
-    margin: 11px auto 27px;
+    margin:
+        11px auto 27px;
 
-    color: rgba(255,255,255,.62);
+    color:
+        rgba(255,255,255,.62);
 
     font-size: 13px;
 }
 
 .cta .btn-primary {
     background: #fff;
+
     border-color: #fff;
+
     color: var(--navy);
+
     box-shadow: none;
 }
+
 
 /* =========================================================
    FAQ
 ========================================================= */
+
 .faq-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap: 15px;
 }
 
@@ -742,7 +1010,9 @@ img {
 
     background: #fff;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius: 9px;
 }
 
@@ -756,42 +1026,56 @@ img {
 
 .faq-item p {
     color: var(--muted);
+
     font-size: 12px;
 }
+
 
 /* =========================================================
    FOOTER
 ========================================================= */
+
 .footer {
     background: #0a1d3b;
+
     color: #fff;
 }
 
 .footer-inner {
-    width: min(100% - 40px, 1180px);
+    width:
+        min(100% - 40px,1180px);
+
     margin: 0 auto;
 
-    padding: 28px 0;
+    padding:
+        28px 0;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 }
 
 .footer-copy,
 .footer-links {
-    color: rgba(255,255,255,.48);
+    color:
+        rgba(255,255,255,.48);
+
     font-size: 9px;
 }
 
 .footer-links {
     display: flex;
+
     gap: 20px;
 }
 
+
 /* =========================================================
-   MEDIUM DESKTOP / LAPTOP
+   LAPTOP
 ========================================================= */
+
 @media (max-width: 1200px) {
 
     .hero-copy {
@@ -803,13 +1087,16 @@ img {
     }
 
     .hero-background {
-        background-position: 57% center;
+        background-position:
+            57% center;
     }
 }
+
 
 /* =========================================================
    TABLET
 ========================================================= */
+
 @media (max-width: 850px) {
 
     .nav-links {
@@ -822,6 +1109,7 @@ img {
 
     .hero-title {
         font-size: 48px;
+
         letter-spacing: -3px;
     }
 
@@ -838,12 +1126,16 @@ img {
     }
 }
 
+
 /* =========================================================
    MOBILE
 ========================================================= */
+
 @media (max-width: 650px) {
 
-    /* NAV */
+    /* -----------------------------------------
+       NAVBAR
+    ----------------------------------------- */
 
     .navbar {
         height: 92px;
@@ -851,7 +1143,9 @@ img {
 
     .nav-inner {
         width: 100%;
-        padding: 0 32px;
+
+        padding:
+            0 32px;
     }
 
     .logo {
@@ -863,361 +1157,612 @@ img {
         height: 40px;
     }
 
-    /* HERO */
+
+    /* -----------------------------------------
+       HERO
+    ----------------------------------------- */
 
     .hero {
         min-height: auto;
+
         overflow: visible;
     }
 
-    /*
-       Mobile background becomes a fixed-height banner.
-    */
+
+    /* -----------------------------------------
+       MOBILE BACKGROUND
+       
+       CHANGED:
+       62% → 70%
+       
+       This shifts the girl LEFT so her face
+       is no longer cut off on the right.
+    ----------------------------------------- */
+
     .hero-background {
+
         height: 520px;
 
-        inset: 0 0 auto 0;
+        inset:
+            0 0 auto 0;
 
-        background-size: cover;
+        background-size:
+            cover;
 
-        /*
-           Keep girl's face on right side.
-        */
-        background-position: 62% center;
+        background-position:
+            70% center;
     }
 
-    /*
-       Left fade + bottom fade.
-    */
+
+    /* -----------------------------------------
+       MOBILE IMAGE FADE
+    ----------------------------------------- */
+
     .hero-background::after {
+
         background:
+
             linear-gradient(
                 to bottom,
+
                 rgba(255,255,255,0) 48%,
+
                 rgba(255,255,255,.60) 75%,
+
                 #ffffff 100%
             ),
+
             linear-gradient(
                 90deg,
+
                 rgba(255,255,255,.97) 0%,
+
                 rgba(255,255,255,.86) 28%,
+
                 rgba(255,255,255,.40) 51%,
+
                 rgba(255,255,255,.04) 74%
             );
     }
+
+
+    /* -----------------------------------------
+       GRID
+    ----------------------------------------- */
 
     .hero-grid {
         height: 520px;
     }
 
+
+    /* -----------------------------------------
+       HERO CONTENT
+    ----------------------------------------- */
+
     .hero-inner {
+
         width: 100%;
+
         min-height: 520px;
 
-        padding: 0 35px;
+        padding:
+            0 35px;
 
         display: flex;
+
         align-items: center;
     }
 
-    /*
-       Text remains on LEFT of girl.
-    */
+
+    /* -----------------------------------------
+       TEXT LEFT OF GIRL
+    ----------------------------------------- */
+
     .hero-copy {
+
         width: 58%;
+
         max-width: 58%;
 
-        margin: 35px 0 0;
+        margin:
+            35px 0 0;
     }
 
+
+    /* -----------------------------------------
+       KICKER
+    ----------------------------------------- */
+
     .hero-kicker {
+
         margin-bottom: 17px;
 
         gap: 7px;
 
         font-size: 7px;
+
         letter-spacing: 1.15px;
 
         white-space: nowrap;
     }
 
     .hero-kicker-dot {
+
         width: 7px;
         height: 7px;
+
         flex-basis: 7px;
     }
 
+
+    /* -----------------------------------------
+       MOBILE TITLE
+    ----------------------------------------- */
+
     .hero-title {
+
         font-size: 32px;
+
         line-height: 1.02;
 
         letter-spacing: -2px;
     }
 
     .typing-line {
+
         min-height: 1.08em;
+
         margin-top: 4px;
     }
 
     .typing-word::after {
+
         width: 2px;
+
         margin-left: 3px;
     }
 
+
+    /* -----------------------------------------
+       DESCRIPTION
+    ----------------------------------------- */
+
     .hero-description {
+
         width: 100%;
 
         margin-top: 14px;
 
         font-size: 9px;
+
         line-height: 1.5;
     }
 
-    /*
-       On mobile buttons leave the narrow 58% text column
-       and become full-width directly below the visual banner.
-    */
+
+    /* -----------------------------------------
+       CTA BELOW BANNER
+    ----------------------------------------- */
+
     .hero-actions {
+
         position: absolute;
 
         top: 520px;
+
         left: 0;
 
         width: 100%;
 
-        padding: 14px 35px 0;
+        padding:
+            14px 35px 0;
 
         margin: 0;
 
         display: flex;
+
         flex-direction: column;
+
         gap: 10px;
 
         background: #fff;
     }
 
     .btn {
+
         width: 100%;
+
         min-height: 55px;
 
         font-size: 12px;
     }
 
+
+    /* -----------------------------------------
+       NOTE
+    ----------------------------------------- */
+
     .hero-note {
+
         position: absolute;
 
         top: 654px;
+
         left: 0;
 
         width: 100%;
 
         margin: 0;
 
-        padding: 10px 35px 25px;
+        padding:
+            10px 35px 25px;
 
         background: #fff;
 
         font-size: 8px;
     }
 
-    /*
-       Make room for CTA + note which are positioned
-       underneath the image.
-    */
+
+    /* -----------------------------------------
+       HERO SPACE
+    ----------------------------------------- */
+
     .hero {
         padding-bottom: 185px;
     }
 
-    /* TRUST */
+
+    /* -----------------------------------------
+       TRUST
+    ----------------------------------------- */
 
     .trust-wrap {
         padding: 0 15px;
     }
 
     .trust-strip {
-        margin: 0 auto;
 
-        grid-template-columns: 1fr;
+        margin:
+            0 auto;
+
+        grid-template-columns:
+            1fr;
 
         padding: 18px;
     }
 
     .trust-item {
-        padding: 11px 0;
+
+        padding:
+            11px 0;
 
         border-right: none;
-        border-bottom: 1px solid var(--border);
+
+        border-bottom:
+            1px solid var(--border);
     }
 
     .trust-item:last-child {
+
         border-bottom: none;
     }
 
-    /* SECTIONS */
+
+    /* -----------------------------------------
+       SECTIONS
+    ----------------------------------------- */
 
     .section {
-        width: calc(100% - 36px);
-        padding: 70px 0;
+
+        width:
+            calc(100% - 36px);
+
+        padding:
+            70px 0;
     }
 
     .section-header {
-        margin-bottom: 30px;
+
+        margin-bottom:
+            30px;
     }
 
     .section-header h2 {
+
         font-size: 30px;
+
         letter-spacing: -1.5px;
     }
 
-    /* REWARDS */
+
+    /* -----------------------------------------
+       REWARDS
+    ----------------------------------------- */
 
     .rewards-section-wrap {
-        margin-top: 55px;
+
+        margin-top:
+            55px;
     }
 
     .reward-grid {
-        grid-template-columns: 1fr;
-        max-width: 390px;
-        gap: 16px;
+
+        grid-template-columns:
+            1fr;
+
+        max-width:
+            390px;
+
+        gap:
+            16px;
     }
 
     .reward-image-box {
-        height: 230px;
+
+        height:
+            230px;
     }
 
     .reward-footer {
-        max-width: 390px;
 
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
+        max-width:
+            390px;
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+        gap:
+            5px;
     }
 
-    /* STEPS */
+
+    /* -----------------------------------------
+       STEPS
+    ----------------------------------------- */
 
     .steps {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
     }
 
-    /* FAQ */
+
+    /* -----------------------------------------
+       FAQ
+    ----------------------------------------- */
 
     .faq-grid {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
     }
 
-    /* CTA */
+
+    /* -----------------------------------------
+       CTA
+    ----------------------------------------- */
 
     .cta {
-        padding: 55px 20px;
+
+        padding:
+            55px 20px;
     }
 
     .cta h2 {
-        font-size: 30px;
-        letter-spacing: -1.5px;
+
+        font-size:
+            30px;
+
+        letter-spacing:
+            -1.5px;
     }
 
-    /* FOOTER */
+
+    /* -----------------------------------------
+       FOOTER
+    ----------------------------------------- */
 
     .footer-inner {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
+
+        flex-direction:
+            column;
+
+        gap:
+            12px;
+
+        text-align:
+            center;
     }
 }
 
+
 /* =========================================================
-   SMALL MOBILE
+   SMALL PHONES
 ========================================================= */
+
 @media (max-width: 390px) {
 
     .nav-inner {
-        padding: 0 25px;
+        padding:
+            0 25px;
     }
+
 
     .hero-background,
     .hero-grid {
-        height: 490px;
+
+        height:
+            490px;
     }
+
+
+    /*
+       Keep the slightly-left-shifted image
+       on smaller phones too.
+    */
+
+    .hero-background {
+
+        background-position:
+            70% center;
+    }
+
 
     .hero-inner {
-        min-height: 490px;
-        padding: 0 28px;
+
+        min-height:
+            490px;
+
+        padding:
+            0 28px;
     }
+
 
     .hero-copy {
-        width: 60%;
-        max-width: 60%;
+
+        width:
+            60%;
+
+        max-width:
+            60%;
     }
+
 
     .hero-title {
-        font-size: 29px;
-        letter-spacing: -1.7px;
+
+        font-size:
+            29px;
+
+        letter-spacing:
+            -1.7px;
     }
+
 
     .hero-kicker {
-        font-size: 6.5px;
+
+        font-size:
+            6.5px;
     }
+
 
     .hero-description {
-        font-size: 8.5px;
+
+        font-size:
+            8.5px;
     }
+
 
     .hero-actions {
-        top: 490px;
-        padding-left: 28px;
-        padding-right: 28px;
+
+        top:
+            490px;
+
+        padding-left:
+            28px;
+
+        padding-right:
+            28px;
     }
 
+
     .hero-note {
-        top: 624px;
-        padding-left: 28px;
-        padding-right: 28px;
+
+        top:
+            624px;
+
+        padding-left:
+            28px;
+
+        padding-right:
+            28px;
     }
 }
+
 </style>
 </head>
 
+
 <body>
+
 
 <!-- =========================================================
      NAVBAR
 ========================================================= -->
+
 <nav class="navbar">
+
     <div class="nav-inner">
 
         <a href="#" class="logo">
-            <div class="logo-mark">T</div>
+
+            <div class="logo-mark">
+                T
+            </div>
+
             <div class="logo-text">
                 Task<span>2</span>Get
             </div>
+
         </a>
 
+
         <div class="nav-links">
-            <a href="#rewards">Rewards</a>
-            <a href="#how">How It Works</a>
-            <a href="#faq">FAQ</a>
-            <a href="#how" class="nav-cta">Start Earning</a>
+
+            <a href="#rewards">
+                Rewards
+            </a>
+
+            <a href="#how">
+                How It Works
+            </a>
+
+            <a href="#faq">
+                FAQ
+            </a>
+
+            <a
+                href="#how"
+                class="nav-cta"
+            >
+                Start Earning
+            </a>
+
         </div>
 
     </div>
+
 </nav>
+
+
 
 <!-- =========================================================
      HERO
 ========================================================= -->
+
 <header class="hero">
 
     <div class="hero-background"></div>
+
     <div class="hero-grid"></div>
+
 
     <div class="hero-inner">
 
         <div class="hero-copy">
 
+
             <div class="hero-kicker">
-                <span class="hero-kicker-dot"></span>
+
+                <span
+                    class="hero-kicker-dot"
+                ></span>
+
                 SIMPLE TASKS · REAL REWARDS
+
             </div>
+
 
             <h1 class="hero-title">
 
@@ -1230,20 +1775,27 @@ img {
                 </span>
 
                 <span class="typing-line">
+
                     <span
                         class="typing-word"
                         id="typingText"
-                    >worth it.</span>
+                    >
+                        worth it.
+                    </span>
+
                 </span>
 
             </h1>
 
+
             <p class="hero-description">
-                Complete simple tasks and work toward digital
-                rewards you actually want.
+
+                Complete simple tasks and work toward
+                digital rewards you actually want.
+
             </p>
 
-            <!-- BUTTONS ARE NOW INSIDE HERO COPY -->
+
             <div class="hero-actions">
 
                 <a
@@ -1252,6 +1804,7 @@ img {
                 >
                     Start Earning →
                 </a>
+
 
                 <a
                     href="#rewards"
@@ -1262,10 +1815,18 @@ img {
 
             </div>
 
+
             <div class="hero-note">
-                <span class="hero-note-dot"></span>
-                Pick a task. Complete it. Work toward your reward.
+
+                <span
+                    class="hero-note-dot"
+                ></span>
+
+                Pick a task. Complete it.
+                Work toward your reward.
+
             </div>
+
 
         </div>
 
@@ -1273,41 +1834,73 @@ img {
 
 </header>
 
+
+
 <!-- =========================================================
      TRUST
 ========================================================= -->
+
 <div class="trust-wrap">
 
     <div class="trust-strip">
 
-        <div class="trust-item">
-            <strong>Simple Tasks</strong>
-            <span>Choose what fits your time</span>
-        </div>
 
         <div class="trust-item">
-            <strong>Clear Requirements</strong>
-            <span>Know what to do before starting</span>
+
+            <strong>
+                Simple Tasks
+            </strong>
+
+            <span>
+                Choose what fits your time
+            </span>
+
         </div>
 
+
         <div class="trust-item">
-            <strong>Reward Choices</strong>
-            <span>Work toward what you want</span>
+
+            <strong>
+                Clear Requirements
+            </strong>
+
+            <span>
+                Know what to do before starting
+            </span>
+
         </div>
+
+
+        <div class="trust-item">
+
+            <strong>
+                Reward Choices
+            </strong>
+
+            <span>
+                Work toward what you want
+            </span>
+
+        </div>
+
 
     </div>
 
 </div>
 
+
+
 <!-- =========================================================
      REWARDS
 ========================================================= -->
+
 <div
     class="rewards-section-wrap"
     id="rewards"
 >
 
 <section class="section">
+
 
     <div class="section-header">
 
@@ -1320,27 +1913,36 @@ img {
         </h2>
 
         <p>
-            Gaming, entertainment, shopping and digital rewards.
+            Gaming, entertainment, shopping
+            and digital rewards.
         </p>
 
     </div>
 
+
     <div class="reward-grid">
 
+
         <!-- VALORANT -->
+
         <div class="reward-card">
 
             <div class="reward-image-box">
+
                 <img
                     class="reward-image"
                     src="https://www.dollargeneral.com/cdn/shop/files/799366502364_1.jpg"
                     alt="VALORANT Gift Card"
                 >
+
             </div>
+
 
             <div class="reward-info">
 
-                <h3>VALORANT</h3>
+                <h3>
+                    VALORANT
+                </h3>
 
                 <p>
                     Gaming rewards
@@ -1354,20 +1956,27 @@ img {
 
         </div>
 
+
         <!-- PLAYSTATION -->
+
         <div class="reward-card">
 
             <div class="reward-image-box">
+
                 <img
                     class="reward-image"
                     src="https://www.jbhifi.com.au/cdn/shop/files/790464-Product-0-I-638651686203263102_1024x1024.jpg"
                     alt="PlayStation Gift Card"
                 >
+
             </div>
+
 
             <div class="reward-info">
 
-                <h3>PlayStation</h3>
+                <h3>
+                    PlayStation
+                </h3>
 
                 <p>
                     Games & entertainment
@@ -1381,20 +1990,27 @@ img {
 
         </div>
 
+
         <!-- PUBG -->
+
         <div class="reward-card">
 
             <div class="reward-image-box">
+
                 <img
                     class="reward-image"
                     src="https://onlyonestore.net/wp-content/uploads/2024/09/PUBG-Mobile-Recharge-Voucher-60-to-10500-UC.webp"
                     alt="PUBG MOBILE Gift Card"
                 >
+
             </div>
+
 
             <div class="reward-info">
 
-                <h3>PUBG MOBILE</h3>
+                <h3>
+                    PUBG MOBILE
+                </h3>
 
                 <p>
                     UC & gaming rewards
@@ -1408,7 +2024,9 @@ img {
 
         </div>
 
+
     </div>
+
 
     <div class="reward-footer">
 
@@ -1422,17 +2040,22 @@ img {
 
     </div>
 
+
 </section>
 
 </div>
 
+
+
 <!-- =========================================================
      HOW IT WORKS
 ========================================================= -->
+
 <section
     class="section"
     id="how"
 >
+
 
     <div class="section-header">
 
@@ -1450,7 +2073,9 @@ img {
 
     </div>
 
+
     <div class="steps">
+
 
         <div class="step">
 
@@ -1463,11 +2088,13 @@ img {
             </h3>
 
             <p>
-                Browse available opportunities and choose
-                something that fits your time.
+                Browse available opportunities
+                and choose something that fits
+                your time.
             </p>
 
         </div>
+
 
         <div class="step">
 
@@ -1480,11 +2107,13 @@ img {
             </h3>
 
             <p>
-                Follow the task instructions and provide
-                whatever proof is required.
+                Follow the task instructions
+                and provide whatever proof
+                is required.
             </p>
 
         </div>
+
 
         <div class="step">
 
@@ -1497,19 +2126,23 @@ img {
             </h3>
 
             <p>
-                Once successfully verified, your reward
-                can become available.
+                Once successfully verified,
+                your reward can become available.
             </p>
 
         </div>
+
 
     </div>
 
 </section>
 
+
+
 <!-- =========================================================
      CTA
 ========================================================= -->
+
 <section class="section">
 
     <div class="cta">
@@ -1519,8 +2152,9 @@ img {
         </h2>
 
         <p>
-            Choose a task, complete it, and work toward
-            something you actually want.
+            Choose a task, complete it,
+            and work toward something
+            you actually want.
         </p>
 
         <a
@@ -1534,13 +2168,17 @@ img {
 
 </section>
 
+
+
 <!-- =========================================================
      FAQ
 ========================================================= -->
+
 <section
     class="section"
     id="faq"
 >
+
 
     <div class="section-header">
 
@@ -1554,7 +2192,9 @@ img {
 
     </div>
 
+
     <div class="faq-grid">
+
 
         <div class="faq-item">
 
@@ -1563,11 +2203,13 @@ img {
             </h3>
 
             <p>
-                Choose an available task, complete the required
-                steps and submit the requested proof.
+                Choose an available task,
+                complete the required steps
+                and submit the requested proof.
             </p>
 
         </div>
+
 
         <div class="faq-item">
 
@@ -1576,11 +2218,13 @@ img {
             </h3>
 
             <p>
-                Each task has its own verification requirements.
-                Submissions are checked against those requirements.
+                Each task has its own verification
+                requirements. Submissions are
+                checked against those requirements.
             </p>
 
         </div>
+
 
         <div class="faq-item">
 
@@ -1589,26 +2233,35 @@ img {
             </h3>
 
             <p>
-                Available redemption options depend on the
-                rewards currently offered.
+                Available redemption options
+                depend on the rewards currently offered.
             </p>
 
         </div>
+
 
     </div>
 
 </section>
 
+
+
 <!-- =========================================================
      FOOTER
 ========================================================= -->
+
 <footer class="footer">
 
     <div class="footer-inner">
 
+
         <div class="footer-copy">
-            © 2026 Task2Get. All rights reserved.
+
+            © 2026 Task2Get.
+            All rights reserved.
+
         </div>
+
 
         <div class="footer-links">
 
@@ -1626,42 +2279,55 @@ img {
 
         </div>
 
+
     </div>
 
 </footer>
 
+
+
 <!-- =========================================================
      TYPING ANIMATION
 ========================================================= -->
+
 <script>
 
 const typingElement =
-    document.getElementById("typingText");
+    document.getElementById(
+        "typingText"
+    );
 
 
 const phrases = [
+
     "worth it.",
+
     "gaming rewards.",
+
     "your next reward.",
+
     "something you want."
+
 ];
 
 
 let phraseIndex = 0;
-let characterIndex = phrases[0].length;
+
+let characterIndex =
+    phrases[0].length;
+
 let deleting = true;
 
-
-/*
-    We reserve a whole line for the animation in CSS,
-    so changing phrase length will NOT move the CTA upward.
-*/
 
 function animateTyping() {
 
     const phrase =
         phrases[phraseIndex];
 
+
+    /* -----------------------------------------
+       DELETE
+    ----------------------------------------- */
 
     if (deleting) {
 
@@ -1700,6 +2366,10 @@ function animateTyping() {
         return;
     }
 
+
+    /* -----------------------------------------
+       TYPE
+    ----------------------------------------- */
 
     const nextPhrase =
         phrases[phraseIndex];
@@ -1745,6 +2415,7 @@ setTimeout(
 );
 
 </script>
+
 
 </body>
 </html>
