@@ -1,571 +1,1277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>TaskToGet — Complete Tasks. Get Rewards.</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg: #080b12;
-            --card: #10151f;
-            --card-light: #151c28;
-            --text: #f5f7fb;
-            --muted: #8d98aa;
-            --primary: #6c63ff;
-            --primary-light: #8b84ff;
-            --green: #35d07f;
-            --border: rgba(255,255,255,0.08);
-        }
-
-        body {
-            font-family: Inter, Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* NAVBAR */
-
-        nav {
-            width: 100%;
-            border-bottom: 1px solid var(--border);
-            background: rgba(8,11,18,0.88);
-            backdrop-filter: blur(15px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 1150px;
-            margin: auto;
-            height: 72px;
-            padding: 0 24px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-
-        .logo span {
-            color: var(--primary-light);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--muted);
-            font-size: 14px;
-            transition: 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: white;
-        }
-
-        .nav-button {
-            padding: 10px 18px;
-            border-radius: 9px;
-            background: var(--primary);
-            color: white !important;
-            font-weight: 600;
-        }
-
-        /* HERO */
-
-        .hero {
-            max-width: 1150px;
-            margin: auto;
-            padding: 110px 24px 90px;
-            text-align: center;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-
-            padding: 7px 13px;
-            border: 1px solid rgba(108,99,255,0.3);
-            background: rgba(108,99,255,0.08);
-            border-radius: 50px;
-
-            color: #aaa5ff;
-            font-size: 13px;
-            font-weight: 600;
-
-            margin-bottom: 24px;
-        }
-
-        .badge-dot {
-            width: 7px;
-            height: 7px;
-            background: var(--green);
-            border-radius: 50%;
-        }
-
-        .hero h1 {
-            max-width: 850px;
-            margin: auto;
-
-            font-size: clamp(42px, 7vw, 76px);
-            line-height: 1.02;
-            letter-spacing: -3px;
-            font-weight: 850;
-        }
-
-        .hero h1 span {
-            color: var(--primary-light);
-        }
-
-        .hero p {
-            max-width: 650px;
-            margin: 25px auto 35px;
-
-            color: var(--muted);
-            font-size: 18px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 14px 23px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 15px;
-            transition: 0.2s;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-light);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            border: 1px solid var(--border);
-            color: white;
-            background: var(--card);
-        }
-
-        .btn-secondary:hover {
-            background: var(--card-light);
-        }
-
-        /* STATS */
-
-        .stats {
-            max-width: 850px;
-            margin: 0 auto 100px;
-
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-
-            border: 1px solid var(--border);
-            border-radius: 15px;
-            background: var(--card);
-            overflow: hidden;
-        }
-
-        .stat {
-            padding: 25px;
-            text-align: center;
-            border-right: 1px solid var(--border);
-        }
-
-        .stat:last-child {
-            border-right: none;
-        }
-
-        .stat strong {
-            display: block;
-            font-size: 25px;
-        }
-
-        .stat span {
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        /* SECTION */
-
-        section {
-            max-width: 1150px;
-            margin: auto;
-            padding: 70px 24px;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-
-        .section-title h2 {
-            font-size: 36px;
-            letter-spacing: -1px;
-        }
-
-        .section-title p {
-            color: var(--muted);
-            margin-top: 8px;
-        }
-
-        /* HOW IT WORKS */
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .step {
-            padding: 30px;
-            border: 1px solid var(--border);
-            border-radius: 15px;
-            background: var(--card);
-        }
-
-        .step-number {
-            width: 42px;
-            height: 42px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 10px;
-            background: rgba(108,99,255,0.15);
-            color: #aaa5ff;
-
-            font-weight: 800;
-            margin-bottom: 22px;
-        }
-
-        .step h3 {
-            margin-bottom: 8px;
-        }
-
-        .step p {
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        /* TASKS */
-
-        .task-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-        }
-
-        .task-card {
-            padding: 22px;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            transition: 0.2s;
-        }
-
-        .task-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(108,99,255,0.4);
-        }
-
-        .task-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 18px;
-        }
-
-        .task-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 10px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background: rgba(108,99,255,0.13);
-            font-size: 20px;
-        }
-
-        .reward {
-            color: var(--green);
-            font-weight: 800;
-            font-size: 15px;
-        }
-
-        .task-card h3 {
-            font-size: 17px;
-            margin-bottom: 6px;
-        }
-
-        .task-card p {
-            color: var(--muted);
-            font-size: 13px;
-            margin-bottom: 18px;
-        }
-
-        .task-meta {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 18px;
-        }
-
-        .tag {
-            font-size: 11px;
-            color: var(--muted);
-            padding: 5px 8px;
-            border-radius: 6px;
-            background: rgba(255,255,255,0.05);
-        }
-
-        .task-button {
-            width: 100%;
-            padding: 10px;
-
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            background: transparent;
-            color: white;
-
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .task-button:hover {
-            background: var(--primary);
-            border-color: var(--primary);
-        }
-
-        /* CTA */
-
-        .cta {
-            margin-top: 50px;
-            padding: 70px 30px;
-
-            text-align: center;
-
-            border-radius: 20px;
-            border: 1px solid var(--border);
-
-            background:
-                radial-gradient(
-                    circle at center,
-                    rgba(108,99,255,0.18),
-                    transparent 60%
-                ),
-                var(--card);
-        }
-
-        .cta h2 {
-            font-size: 38px;
-            margin-bottom: 12px;
-        }
-
-        .cta p {
-            color: var(--muted);
-            margin-bottom: 25px;
-        }
-
-        /* FOOTER */
-
-        footer {
-            margin-top: 80px;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-container {
-            max-width: 1150px;
-            margin: auto;
-            padding: 35px 24px;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        footer p {
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 20px;
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 800px) {
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding-top: 75px;
-            }
-
-            .hero h1 {
-                letter-spacing: -2px;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            .stat {
-                border-right: none;
-                border-bottom: 1px solid var(--border);
-            }
-
-            .stat:last-child {
-                border-bottom: none;
-            }
-
-            .steps,
-            .task-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Task2Get — Complete Tasks. Get Rewards.</title>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    background: #f7f8fa;
+    color: #18202b;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+    --blue: #315efb;
+    --blue-dark: #244bd2;
+
+    --green: #20a464;
+
+    --text: #18202b;
+    --text-soft: #596474;
+    --text-light: #7b8593;
+
+    --white: #ffffff;
+
+    --surface: #ffffff;
+    --background: #f7f8fa;
+
+    --border: #e3e7ec;
+
+    --shadow:
+        0 8px 30px rgba(25, 35, 50, 0.07);
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+    height: 72px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 100;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border-bottom: 1px solid var(--border);
+
+    backdrop-filter: blur(12px);
+}
+
+.nav-inner {
+    max-width: 1160px;
+
+    height: 100%;
+
+    margin: auto;
+
+    padding: 0 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    font-size: 21px;
+
+    font-weight: 800;
+
+    letter-spacing: -0.7px;
+}
+
+.logo-mark {
+    width: 32px;
+    height: 32px;
+
+    border-radius: 9px;
+
+    background: #315efb;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 900;
+
+    position: relative;
+
+    box-shadow:
+        0 4px 12px rgba(49, 94, 251, 0.18);
+}
+
+.logo-mark::after {
+    content: "$";
+
+    position: absolute;
+
+    right: 5px;
+    bottom: 3px;
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    opacity: .85;
+}
+
+.logo-text {
+    color: #18202b;
+}
+
+.logo-text span {
+    color: var(--blue);
+}
+
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+.nav-links {
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+}
+
+.nav-links a {
+    font-size: 14px;
+
+    color: var(--text-soft);
+
+    transition: .2s;
+}
+
+.nav-links a:hover {
+    color: var(--text);
+}
+
+.nav-cta {
+    background: var(--blue);
+
+    color: white !important;
+
+    padding: 10px 17px;
+
+    border-radius: 8px;
+
+    font-weight: 700;
+}
+
+.nav-cta:hover {
+    background: var(--blue-dark);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 760px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+
+    background: #f7f8fa;
+}
+
+
+/*
+    Professional Pexels photo:
+    smiling professional man holding smartphone
+*/
+
+.hero-photo {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    width: 57%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f7f8fa 0%,
+            rgba(247,248,250,.92) 13%,
+            rgba(247,248,250,.35) 43%,
+            rgba(247,248,250,.04) 72%
+        ),
+        url("https://images.pexels.com/photos/33100431/pexels-photo-33100431.jpeg")
+        center / cover no-repeat;
+}
+
+
+/* subtle blue atmosphere */
+
+.hero-photo::after {
+    content: "";
+
+    position: absolute;
+
+    right: 12%;
+    top: 18%;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    background: rgba(49,94,251,.07);
+
+    filter: blur(65px);
+}
+
+
+.hero-content {
+    max-width: 1160px;
+
+    width: 100%;
+
+    margin: auto;
+
+    padding:
+        145px
+        24px
+        90px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+.hero-copy {
+    width: 54%;
+}
+
+
+/* =========================================================
+   HERO BADGE
+========================================================= */
+
+.hero-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 6px 11px;
+
+    border-radius: 6px;
+
+    background: #e9f8f0;
+
+    color: #197a4b;
+
+    border: 1px solid #d1f0df;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    margin-bottom: 20px;
+}
+
+.hero-badge-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: var(--green);
+}
+
+
+/* =========================================================
+   HERO TITLE
+========================================================= */
+
+.hero h1 {
+    font-size:
+        clamp(
+            46px,
+            5.4vw,
+            68px
+        );
+
+    line-height: 1.04;
+
+    letter-spacing: -3px;
+
+    font-weight: 800;
+
+    color: #151c26;
+
+    max-width: 680px;
+}
+
+.hero h1 span {
+    color: var(--blue);
+}
+
+
+.hero-description {
+    max-width: 550px;
+
+    margin-top: 22px;
+
+    font-size: 17px;
+
+    color: var(--text-soft);
+}
+
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
+
+.hero-buttons {
+    display: flex;
+
+    gap: 11px;
+
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 46px;
+
+    padding: 0 20px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    transition: .2s;
+}
+
+.btn-primary {
+    background: var(--blue);
+
+    color: white;
+
+    box-shadow:
+        0 5px 14px rgba(49,94,251,.17);
+}
+
+.btn-primary:hover {
+    background: var(--blue-dark);
+
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: white;
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    background: #f1f3f6;
+}
+
+
+/* =========================================================
+   FLOATING REAL REWARD IMAGES
+========================================================= */
+
+.hero-reward {
+    position: absolute;
+
+    z-index: 8;
+
+    width: 118px;
+
+    height: 72px;
+
+    object-fit: contain;
+
+    border-radius: 9px;
+
+    background: rgba(255,255,255,.8);
+
+    padding: 5px;
+
+    box-shadow:
+        0 12px 30px rgba(25,35,50,.14);
+
+    border: 1px solid rgba(255,255,255,.9);
+
+    animation: floating 5s ease-in-out infinite;
+}
+
+.hero-reward-one {
+    right: 26%;
+    top: 26%;
+
+    transform: rotate(5deg);
+}
+
+.hero-reward-two {
+    right: 7%;
+    top: 50%;
+
+    transform: rotate(-5deg);
+
+    animation-delay: -1.7s;
+}
+
+.hero-reward-three {
+    right: 29%;
+    bottom: 17%;
+
+    transform: rotate(-4deg) scale(.85);
+
+    animation-delay: -3s;
+}
+
+
+@keyframes floating {
+
+    0%, 100% {
+        margin-top: 0;
+    }
+
+    50% {
+        margin-top: -10px;
+    }
+}
+
+
+/* =========================================================
+   TRUST STRIP
+========================================================= */
+
+.trust-strip {
+    max-width: 1050px;
+
+    margin:
+        -35px
+        auto
+        0;
+
+    position: relative;
+
+    z-index: 15;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    box-shadow: var(--shadow);
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    padding: 21px;
+}
+
+.trust-item {
+    text-align: center;
+
+    border-right: 1px solid var(--border);
+}
+
+.trust-item:last-child {
+    border-right: none;
+}
+
+.trust-item strong {
+    display: block;
+
+    font-size: 15px;
+
+    color: var(--text);
+}
+
+.trust-item span {
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 12px;
+
+    color: var(--text-light);
+}
+
+
+/* =========================================================
+   GENERAL SECTION
+========================================================= */
+
+.section {
+    max-width: 1160px;
+
+    margin: auto;
+
+    padding:
+        100px
+        24px;
+}
+
+.section-header {
+    text-align: center;
+
+    max-width: 650px;
+
+    margin:
+        0
+        auto
+        45px;
+}
+
+.section-header h2 {
+    font-size: 36px;
+
+    line-height: 1.15;
+
+    letter-spacing: -1.4px;
+
+    color: var(--text);
+}
+
+.section-header p {
+    margin-top: 9px;
+
+    color: var(--text-soft);
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   HOW IT WORKS
+========================================================= */
+
+.steps {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+.step {
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    padding: 28px;
+
+    box-shadow:
+        0 3px 12px rgba(25,35,50,.025);
+}
+
+.step-number {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: #eef3ff;
+
+    color: var(--blue);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    margin-bottom: 20px;
+}
+
+.step h3 {
+    font-size: 17px;
+
+    margin-bottom: 7px;
+}
+
+.step p {
+    color: var(--text-soft);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   REWARDS SECTION
+========================================================= */
+
+.rewards-section {
+    background: white;
+
+    border-top:
+        1px solid var(--border);
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+
+/*
+    Real gift card images.
+    These are displayed as images instead of
+    generating fake card artwork with CSS.
+*/
+
+.reward-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 22px;
+}
+
+
+.reward-item {
+    background: #ffffff;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 14px;
+
+    transition: .2s;
+
+    overflow: hidden;
+}
+
+.reward-item:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 28px rgba(25,35,50,.10);
+
+    border-color: #d5dbe4;
+}
+
+
+.reward-image {
+    width: 100%;
+
+    height: 155px;
+
+    object-fit: contain;
+
+    display: block;
+
+    background: #f4f5f7;
+
+    border-radius: 8px;
+
+    padding: 8px;
+}
+
+
+.reward-info {
+    padding:
+        13px
+        3px
+        3px;
+}
+
+.reward-info h3 {
+    font-size: 15px;
+
+    color: var(--text);
+}
+
+.reward-info p {
+    margin-top: 2px;
+
+    font-size: 11px;
+
+    color: var(--text-light);
+}
+
+
+/* =========================================================
+   MORE REWARDS
+========================================================= */
+
+.more-rewards {
+    margin-top: 25px;
+
+    text-align: center;
+
+    color: var(--text-soft);
+
+    font-size: 13px;
+}
+
+.more-rewards strong {
+    color: var(--blue);
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta-section {
+    padding-top: 65px;
+}
+
+.cta {
+    background: #172033;
+
+    color: white;
+
+    border-radius: 12px;
+
+    padding: 65px 25px;
+
+    text-align: center;
+}
+
+.cta h2 {
+    font-size: 35px;
+
+    letter-spacing: -1px;
+}
+
+.cta p {
+    color: #b6bfcd;
+
+    margin:
+        9px
+        auto
+        25px;
+
+    font-size: 14px;
+}
+
+.cta .btn-primary {
+    background: white;
+
+    color: #18202b;
+
+    box-shadow: none;
+}
+
+.cta .btn-primary:hover {
+    background: #f0f2f5;
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.faq-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 17px;
+}
+
+.faq-item {
+    background: white;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 10px;
+
+    padding: 25px;
+}
+
+.faq-item h3 {
+    font-size: 15px;
+
+    margin-bottom: 7px;
+}
+
+.faq-item p {
+    color: var(--text-soft);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+    background: white;
+
+    border-top:
+        1px solid var(--border);
+}
+
+.footer-inner {
+    max-width: 1160px;
+
+    margin: auto;
+
+    padding:
+        30px
+        24px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.footer-copy {
+    color: var(--text-light);
+
+    font-size: 12px;
+}
+
+.footer-links {
+    display: flex;
+
+    gap: 20px;
+
+    color: var(--text-light);
+
+    font-size: 12px;
+}
+
+.footer-links a:hover {
+    color: var(--text);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width: 900px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero {
+        min-height: 760px;
+    }
+
+    .hero-photo {
+        width: 100%;
+
+        opacity: .32;
+
+        background:
+            linear-gradient(
+                90deg,
+                #f7f8fa 5%,
+                rgba(247,248,250,.72) 100%
+            ),
+            url("https://images.pexels.com/photos/33100431/pexels-photo-33100431.jpeg")
+            center / cover no-repeat;
+    }
+
+    .hero-copy {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 50px;
+
+        letter-spacing: -2.5px;
+    }
+
+    .hero-reward-one {
+        right: 4%;
+        top: 22%;
+    }
+
+    .hero-reward-two {
+        right: 2%;
+        top: 52%;
+    }
+
+    .hero-reward-three {
+        right: 10%;
+        bottom: 12%;
+    }
+
+    .steps,
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .reward-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+
+@media(max-width: 550px) {
+
+    .hero-content {
+        padding-top: 120px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+
+        letter-spacing: -2px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        max-width: 230px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .trust-strip {
+        margin-left: 15px;
+        margin-right: 15px;
+
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+    .trust-item {
+        border-right: none;
+
+        border-bottom:
+            1px solid var(--border);
+
+        padding-bottom: 13px;
+    }
+
+    .trust-item:last-child {
+        border-bottom: none;
+
+        padding-bottom: 0;
+    }
+
+    .reward-grid {
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 10px;
+    }
+
+    .reward-image {
+        height: 125px;
+    }
+
+    .section {
+        padding-top: 75px;
+        padding-bottom: 75px;
+    }
+
+    .section-header h2 {
+        font-size: 30px;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+
+        gap: 12px;
+    }
+}
+
+</style>
 </head>
+
 
 <body>
 
-<!-- NAVIGATION -->
 
-<nav>
-    <div class="nav-container">
+<!-- ======================================================
+     NAVBAR
+======================================================= -->
+
+<nav class="navbar">
+
+    <div class="nav-inner">
 
         <a href="#" class="logo">
-            Task<span>ToGet</span>
+
+            <div class="logo-mark">
+                T
+            </div>
+
+            <div class="logo-text">
+                Task<span>2</span>Get
+            </div>
+
         </a>
 
-        <div class="nav-links">
-            <a href="#how">How It Works</a>
-            <a href="#tasks">Tasks</a>
-            <a href="#faq">FAQ</a>
 
-            <a href="#tasks" class="nav-button">
+        <div class="nav-links">
+
+            <a href="#how">
+                How It Works
+            </a>
+
+            <a href="#rewards">
+                Rewards
+            </a>
+
+            <a href="#faq">
+                FAQ
+            </a>
+
+            <a href="#how" class="nav-cta">
                 Start Earning
             </a>
+
         </div>
 
     </div>
+
 </nav>
 
 
-<!-- HERO -->
+
+<!-- ======================================================
+     HERO
+======================================================= -->
 
 <header class="hero">
 
-    <div class="badge">
-        <span class="badge-dot"></span>
-        Reward platform coming soon
-    </div>
 
-    <h1>
-        Complete Tasks.<br>
-        <span>Get Rewards.</span>
-    </h1>
+    <div class="hero-photo"></div>
 
-    <p>
-        Discover simple online tasks, complete them,
-        submit your proof, and receive rewards for your work.
-    </p>
 
-    <div class="hero-buttons">
+    <!-- Real reward images floating around the hero -->
 
-        <a href="#tasks" class="btn btn-primary">
-            View Tasks →
-        </a>
+    <img
+        class="hero-reward hero-reward-one"
+        src="https://www.dollargeneral.com/cdn/shop/files/799366502364_1.jpg"
+        alt="VALORANT Gift Card"
+    >
 
-        <a href="#how" class="btn btn-secondary">
-            How It Works
-        </a>
+
+    <img
+        class="hero-reward hero-reward-two"
+        src="https://onlyonestore.net/wp-content/uploads/2024/09/PUBG-Mobile-Recharge-Voucher-60-to-10500-UC.webp"
+        alt="PUBG MOBILE Gift Card"
+    >
+
+
+    <img
+        class="hero-reward hero-reward-three"
+        src="https://www.jbhifi.com.au/cdn/shop/files/790464-Product-0-I-638651686203263102_1024x1024.jpg"
+        alt="PlayStation Store Gift Card"
+    >
+
+
+    <div class="hero-content">
+
+        <div class="hero-copy">
+
+
+            <div class="hero-badge">
+
+                <span class="hero-badge-dot"></span>
+
+                Simple tasks. Real rewards.
+
+            </div>
+
+
+            <h1>
+
+                Your time is worth
+                <span>something.</span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                Complete simple online tasks, submit your proof,
+                and turn your spare time into rewards you actually
+                want.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#how"
+                    class="btn btn-primary"
+                >
+                    Start Earning →
+                </a>
+
+
+                <a
+                    href="#rewards"
+                    class="btn btn-secondary"
+                >
+                    View Rewards
+                </a>
+
+            </div>
+
+
+        </div>
 
     </div>
 
 </header>
 
 
-<!-- STATS -->
 
-<div class="stats">
+<!-- ======================================================
+     TRUST STRIP
+======================================================= -->
 
-    <div class="stat">
-        <strong>Simple</strong>
-        <span>Easy tasks</span>
+<div class="trust-strip">
+
+
+    <div class="trust-item">
+
+        <strong>
+            Simple Tasks
+        </strong>
+
+        <span>
+            Pick what works for you
+        </span>
+
     </div>
 
-    <div class="stat">
-        <strong>Proof</strong>
-        <span>Clear verification</span>
+
+    <div class="trust-item">
+
+        <strong>
+            Proof Based
+        </strong>
+
+        <span>
+            Clear verification
+        </span>
+
     </div>
 
-    <div class="stat">
-        <strong>Rewards</strong>
-        <span>Earn for completing tasks</span>
+
+    <div class="trust-item">
+
+        <strong>
+            Reward Choices
+        </strong>
+
+        <span>
+            Redeem what you want
+        </span>
+
     </div>
+
 
 </div>
 
 
-<!-- HOW IT WORKS -->
 
-<section id="how">
+<!-- ======================================================
+     HOW IT WORKS
+======================================================= -->
 
-    <div class="section-title">
+<section class="section" id="how">
 
-        <h2>How It Works</h2>
+
+    <div class="section-header">
+
+        <h2>
+            How Task2Get Works
+        </h2>
 
         <p>
-            Three simple steps between you and your reward.
+            No complicated process. Just complete,
+            submit and get rewarded.
         </p>
 
     </div>
@@ -573,17 +1279,21 @@
 
     <div class="steps">
 
+
         <div class="step">
 
             <div class="step-number">
                 01
             </div>
 
-            <h3>Pick a Task</h3>
+            <h3>
+                Choose a task
+            </h3>
 
             <p>
-                Browse available tasks and choose one
-                that works for you.
+                Browse available opportunities and
+                pick something that matches your time
+                and interests.
             </p>
 
         </div>
@@ -595,11 +1305,13 @@
                 02
             </div>
 
-            <h3>Complete & Submit</h3>
+            <h3>
+                Complete it
+            </h3>
 
             <p>
-                Follow the task instructions and submit
-                the required proof.
+                Follow the instructions carefully and
+                provide the required proof.
             </p>
 
         </div>
@@ -611,258 +1323,445 @@
                 03
             </div>
 
-            <h3>Get Rewarded</h3>
+            <h3>
+                Get rewarded
+            </h3>
 
             <p>
-                Once your submission is verified,
-                receive your available reward.
+                After successful verification, your
+                reward becomes available for redemption.
             </p>
 
         </div>
+
 
     </div>
 
 </section>
 
 
-<!-- TASKS -->
 
-<section id="tasks">
+<!-- ======================================================
+     REWARDS
+======================================================= -->
 
-    <div class="section-title">
+<section
+    class="section rewards-section"
+    id="rewards"
+>
 
-        <h2>Available Tasks</h2>
+
+    <div class="section-header">
+
+        <h2>
+            What Rewards Are Available?
+        </h2>
 
         <p>
-            Example tasks — the real task marketplace will be added later.
+            Turn your completed tasks into rewards
+            you'll actually want to use.
         </p>
 
     </div>
 
 
-    <div class="task-grid">
+
+    <div class="reward-grid">
 
 
-        <div class="task-card">
+        <!-- VALORANT -->
 
-            <div class="task-top">
+        <div class="reward-item">
 
-                <div class="task-icon">
-                    📱
-                </div>
+            <img
+                class="reward-image"
+                src="https://www.dollargeneral.com/cdn/shop/files/799366502364_1.jpg"
+                alt="VALORANT Gift Card"
+            >
 
-                <div class="reward">
-                    Reward
-                </div>
+            <div class="reward-info">
+
+                <h3>
+                    VALORANT
+                </h3>
+
+                <p>
+                    Gaming rewards
+                </p>
 
             </div>
-
-            <h3>App Task</h3>
-
-            <p>
-                Complete the required action and submit
-                your confirmation.
-            </p>
-
-            <div class="task-meta">
-                <span class="tag">5–10 min</span>
-                <span class="tag">Proof required</span>
-            </div>
-
-            <button class="task-button"
-                    onclick="comingSoon()">
-                View Task
-            </button>
 
         </div>
 
 
 
-        <div class="task-card">
+        <!-- GOOGLE PLAY -->
 
-            <div class="task-top">
+        <div class="reward-item">
 
-                <div class="task-icon">
-                    📝
-                </div>
+            <img
+                class="reward-image"
+                src="https://www.fairwaymarket.com/product/google-play-gift-card-25-id-00076750529481"
+                alt="Google Play Gift Card"
+            >
 
-                <div class="reward">
-                    Reward
-                </div>
+            <div class="reward-info">
+
+                <h3>
+                    Google Play
+                </h3>
+
+                <p>
+                    Apps, games & more
+                </p>
 
             </div>
-
-            <h3>Survey Task</h3>
-
-            <p>
-                Complete a qualifying survey and provide
-                the required confirmation.
-            </p>
-
-            <div class="task-meta">
-                <span class="tag">10–15 min</span>
-                <span class="tag">Verification</span>
-            </div>
-
-            <button class="task-button"
-                    onclick="comingSoon()">
-                View Task
-            </button>
 
         </div>
 
 
 
-        <div class="task-card">
+        <!-- PUBG -->
 
-            <div class="task-top">
+        <div class="reward-item">
 
-                <div class="task-icon">
-                    🎯
+            <img
+                class="reward-image"
+                src="https://onlyonestore.net/wp-content/uploads/2024/09/PUBG-Mobile-Recharge-Voucher-60-to-10500-UC.webp"
+                alt="PUBG MOBILE Gift Card"
+            >
+
+            <div class="reward-info">
+
+                <h3>
+                    PUBG MOBILE
+                </h3>
+
+                <p>
+                    UC & gaming rewards
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PLAYSTATION -->
+
+        <div class="reward-item">
+
+            <img
+                class="reward-image"
+                src="https://www.jbhifi.com.au/cdn/shop/files/790464-Product-0-I-638651686203263102_1024x1024.jpg"
+                alt="PlayStation Store Gift Card"
+            >
+
+            <div class="reward-info">
+
+                <h3>
+                    PlayStation
+                </h3>
+
+                <p>
+                    Games & entertainment
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- XBOX -->
+
+        <div class="reward-item">
+
+            <img
+                class="reward-image"
+                src="https://m.media-amazon.com/images/I/71J5b8gR9PL._SL1500_.jpg"
+                alt="Xbox Gift Card"
+            >
+
+            <div class="reward-info">
+
+                <h3>
+                    Xbox
+                </h3>
+
+                <p>
+                    Games & subscriptions
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- STEAM -->
+
+        <div class="reward-item">
+
+            <img
+                class="reward-image"
+                src="https://driffle.com/steam-wallet-50-usd-gift-card-us-digital-code-p9883691"
+                alt="Steam Gift Card"
+            >
+
+            <div class="reward-info">
+
+                <h3>
+                    Steam
+                </h3>
+
+                <p>
+                    Games & digital content
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- AMAZON -->
+
+        <div class="reward-item">
+
+            <img
+                class="reward-image"
+                src="https://www.brookshires.com/product/amazon-gift-card-50-id-00076750160585"
+                alt="Amazon Gift Card"
+            >
+
+            <div class="reward-info">
+
+                <h3>
+                    Amazon
+                </h3>
+
+                <p>
+                    Shopping & more
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- MORE -->
+
+        <div class="reward-item">
+
+            <div
+                class="reward-image"
+                style="
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    flex-direction:column;
+                    background:#eef3ff;
+                    color:#315efb;
+                "
+            >
+
+                <div
+                    style="
+                        font-size:36px;
+                        font-weight:800;
+                    "
+                >
+                    +
                 </div>
 
-                <div class="reward">
-                    Reward
+                <div
+                    style="
+                        font-size:12px;
+                        font-weight:700;
+                    "
+                >
+                    MORE
                 </div>
 
             </div>
 
-            <h3>Quick Task</h3>
 
-            <p>
-                Complete a simple action and submit
-                your proof for verification.
-            </p>
+            <div class="reward-info">
 
-            <div class="task-meta">
-                <span class="tag">2–5 min</span>
-                <span class="tag">Easy</span>
+                <h3>
+                    And More
+                </h3>
+
+                <p>
+                    More rewards coming soon
+                </p>
+
             </div>
-
-            <button class="task-button"
-                    onclick="comingSoon()">
-                View Task
-            </button>
 
         </div>
 
 
     </div>
 
+
+    <div class="more-rewards">
+
+        More brands and reward options will be added
+        as <strong>Task2Get</strong> grows.
+
+    </div>
+
+
 </section>
 
 
-<!-- CTA -->
 
-<section>
+<!-- ======================================================
+     CTA
+======================================================= -->
+
+<section class="section cta-section">
+
 
     <div class="cta">
 
-        <h2>Ready to get started?</h2>
+        <h2>
+            Turn spare time into rewards.
+        </h2>
 
         <p>
-            New tasks and rewards will be available soon.
+            Complete tasks and work toward the reward
+            you actually want.
         </p>
 
-        <a href="#tasks"
-           class="btn btn-primary">
-            Explore Tasks
+        <a
+            href="#how"
+            class="btn btn-primary"
+        >
+            Get Started
         </a>
 
     </div>
 
+
 </section>
 
 
-<!-- FAQ -->
 
-<section id="faq">
+<!-- ======================================================
+     FAQ
+======================================================= -->
 
-    <div class="section-title">
+<section class="section" id="faq">
 
-        <h2>Frequently Asked Questions</h2>
+
+    <div class="section-header">
+
+        <h2>
+            Frequently Asked Questions
+        </h2>
 
         <p>
-            Everything should be clear before you start.
+            A few things to know before getting started.
         </p>
 
     </div>
 
 
-    <div class="steps">
+    <div class="faq-grid">
 
-        <div class="step">
 
-            <h3>How do I earn?</h3>
+        <div class="faq-item">
+
+            <h3>
+                How do I earn rewards?
+            </h3>
 
             <p>
                 Choose an available task, complete the
-                required action, and submit the requested proof.
+                required steps and submit the requested proof.
             </p>
 
         </div>
 
 
-        <div class="step">
+        <div class="faq-item">
 
-            <h3>How is my submission verified?</h3>
+            <h3>
+                How are tasks verified?
+            </h3>
 
             <p>
-                Submissions are reviewed according to
-                the requirements of each individual task.
+                Each task has its own verification
+                requirements. Submissions are checked
+                against those requirements.
             </p>
 
         </div>
 
 
-        <div class="step">
+        <div class="faq-item">
 
-            <h3>When do I receive my reward?</h3>
+            <h3>
+                What can I redeem?
+            </h3>
 
             <p>
-                Rewards are issued after a task has been
-                successfully verified.
+                Available redemption options depend on
+                the rewards currently offered by Task2Get.
             </p>
 
         </div>
+
 
     </div>
+
 
 </section>
 
 
-<!-- FOOTER -->
 
-<footer>
+<!-- ======================================================
+     FOOTER
+======================================================= -->
 
-    <div class="footer-container">
+<footer class="footer">
 
-        <p>
-            © 2026 TaskToGet. All rights reserved.
-        </p>
+
+    <div class="footer-inner">
+
+
+        <div class="footer-copy">
+
+            © 2026 Task2Get. All rights reserved.
+
+        </div>
+
 
         <div class="footer-links">
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
+
+            <a href="#">
+                Privacy
+            </a>
+
+            <a href="#">
+                Terms
+            </a>
+
             <a href="mailto:support@tasktoget.xyz">
                 Contact
             </a>
+
         </div>
+
 
     </div>
 
+
 </footer>
 
-
-<script>
-
-function comingSoon() {
-    alert(
-        "Tasks are currently being prepared. Check back soon!"
-    );
-}
-
-</script>
 
 </body>
 </html>
