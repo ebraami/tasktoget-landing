@@ -26,7 +26,6 @@
 
     --text: #10203a;
     --muted: #68778e;
-    --light-text: #91a0b5;
 
     --border: #e2e8f1;
 
@@ -60,7 +59,6 @@ body {
         sans-serif;
 
     background: var(--bg);
-
     color: var(--text);
 
     line-height: 1.55;
@@ -96,10 +94,10 @@ img {
     z-index: 100;
 
     background:
-        rgba(255, 255, 255, .94);
+        rgba(255,255,255,.95);
 
     border-bottom:
-        1px solid rgba(16, 42, 86, .08);
+        1px solid rgba(16,42,86,.08);
 
     backdrop-filter:
         blur(15px);
@@ -198,7 +196,7 @@ img {
 }
 
 .nav-links a {
-    color: var(--muted);
+    color: #68778e;
 
     font-size: 12px;
 
@@ -223,13 +221,9 @@ img {
     font-weight: 850 !important;
 }
 
-.nav-cta:hover {
-    background: var(--blue);
-}
-
 
 /* =========================================================
-   HERO — DESKTOP
+   HERO DESKTOP
 ========================================================= */
 
 .hero {
@@ -250,7 +244,7 @@ img {
 
 
 /* =========================================================
-   DESKTOP HERO GRADIENT
+   DESKTOP OVERLAY
 ========================================================= */
 
 .hero::before {
@@ -270,23 +264,23 @@ img {
 
             rgba(255,255,255,1) 0%,
 
-            rgba(255,255,255,.99) 24%,
+            rgba(255,255,255,.99) 23%,
 
-            rgba(255,255,255,.94) 36%,
+            rgba(255,255,255,.93) 36%,
 
-            rgba(255,255,255,.76) 47%,
+            rgba(255,255,255,.72) 48%,
 
-            rgba(255,255,255,.45) 58%,
+            rgba(255,255,255,.38) 60%,
 
-            rgba(255,255,255,.16) 70%,
+            rgba(255,255,255,.08) 75%,
 
-            rgba(255,255,255,0) 84%
+            rgba(255,255,255,0) 88%
         );
 }
 
 
 /* =========================================================
-   HERO GRID
+   GRID
 ========================================================= */
 
 .hero-grid {
@@ -298,7 +292,7 @@ img {
 
     pointer-events: none;
 
-    opacity: .55;
+    opacity: .5;
 
     background-image:
         linear-gradient(
@@ -313,13 +307,6 @@ img {
 
     background-size:
         58px 58px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black 0%,
-            transparent 80%
-        );
 }
 
 
@@ -338,7 +325,8 @@ img {
 
     display: grid;
 
-    grid-template-columns: 54% 46%;
+    grid-template-columns:
+        54% 46%;
 
     align-items: center;
 
@@ -401,8 +389,6 @@ img {
 
 .hero h1 {
     max-width: 700px;
-
-    margin: 0;
 
     color: var(--navy);
 
@@ -482,7 +468,7 @@ img {
 
 
 /* =========================================================
-   BUTTONS
+   ACTIONS
 ========================================================= */
 
 .hero-actions {
@@ -544,23 +530,11 @@ img {
 
     border:
         1px solid #d8e0eb;
-
-    backdrop-filter:
-        blur(5px);
-}
-
-.btn-secondary:hover {
-    background: white;
-
-    border-color: #aab8cc;
-
-    transform:
-        translateY(-1px);
 }
 
 
 /* =========================================================
-   HERO NOTE
+   NOTE
 ========================================================= */
 
 .hero-note {
@@ -583,33 +557,7 @@ img {
 
 
 /* =========================================================
-   HERO BOTTOM FADE
-========================================================= */
-
-.hero-bottom-fade {
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    height: 100px;
-
-    background:
-        linear-gradient(
-            to top,
-            rgba(246,248,252,.65),
-            rgba(246,248,252,0)
-        );
-
-    z-index: 2;
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   TRUST STRIP
+   TRUST
 ========================================================= */
 
 .trust-strip {
@@ -664,7 +612,7 @@ img {
 
     margin-top: 3px;
 
-    color: var(--muted);
+    color: #68778e;
 
     font-size: 10px;
 }
@@ -723,7 +671,7 @@ img {
 .section-header p {
     margin-top: 9px;
 
-    color: var(--muted);
+    color: #68778e;
 
     font-size: 13px;
 }
@@ -753,7 +701,7 @@ img {
 
     max-width: 1080px;
 
-    margin: 0 auto;
+    margin: auto;
 }
 
 .reward-card {
@@ -770,19 +718,13 @@ img {
 
     overflow: hidden;
 
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease,
-        border-color .25s ease;
+    transition: .25s;
 }
 
 .reward-card:hover {
     transform:
         translateY(-7px)
         scale(1.015);
-
-    border-color:
-        #b9c9e3;
 
     box-shadow:
         0 20px 45px rgba(16,42,86,.13);
@@ -803,14 +745,6 @@ img {
         #f1f4f9;
 
     border-radius: 8px;
-
-    transition:
-        transform .3s ease;
-}
-
-.reward-card:hover .reward-image {
-    transform:
-        scale(1.045);
 }
 
 .reward-info {
@@ -819,92 +753,72 @@ img {
 }
 
 .reward-info h3 {
-    color:
-        var(--navy);
+    color: var(--navy);
 
-    font-size:
-        18px;
+    font-size: 18px;
 
-    font-weight:
-        900;
-
-    letter-spacing:
-        -.4px;
+    font-weight: 900;
 }
 
 .reward-info p {
-    margin-top:
-        4px;
+    margin-top: 4px;
 
-    color:
-        var(--muted);
+    color: #68778e;
 
-    font-size:
-        11px;
+    font-size: 11px;
 }
 
 .reward-arrow {
-    display:
-        inline-block;
+    display: inline-block;
 
-    margin-top:
-        14px;
+    margin-top: 14px;
 
-    color:
-        var(--blue);
+    color: var(--blue);
 
-    font-size:
-        11px;
+    font-size: 11px;
 
-    font-weight:
-        850;
+    font-weight: 850;
 }
 
+
+/* =========================================================
+   REWARD FOOTER
+========================================================= */
+
 .reward-footer {
-    max-width:
-        1080px;
+    max-width: 1080px;
 
-    margin:
-        22px auto 0;
+    margin: 22px auto 0;
 
-    padding:
-        17px 20px;
+    padding: 17px 20px;
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
 
-    justify-content:
-        space-between;
+    justify-content: space-between;
 
-    background:
-        var(--navy);
+    background: var(--navy);
 
-    color:
-        white;
+    color: white;
 
-    border-radius:
-        7px;
+    border-radius: 7px;
 }
 
 .reward-footer strong {
-    font-size:
-        12px;
+    font-size: 12px;
 }
 
 .reward-footer span {
     color:
         rgba(255,255,255,.58);
 
-    font-size:
-        10px;
+    font-size: 10px;
 }
 
 
 /* =========================================================
-   HOW IT WORKS
+   STEPS
 ========================================================= */
 
 .steps {
@@ -969,7 +883,7 @@ img {
 }
 
 .step p {
-    color: var(--muted);
+    color: #68778e;
 
     font-size: 12px;
 }
@@ -998,34 +912,12 @@ img {
     color: white;
 
     border-radius: 10px;
-
-    box-shadow:
-        0 22px 50px rgba(16,42,86,.14);
-}
-
-.cta::before {
-    content: "";
-
-    position: absolute;
-
-    width: 270px;
-    height: 270px;
-
-    right: -150px;
-    top: -160px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(47,107,255,.16);
 }
 
 .cta h2 {
     position: relative;
 
     z-index: 2;
-
-    color: white;
 
     font-size: 38px;
 
@@ -1051,17 +943,11 @@ img {
 }
 
 .cta .btn-primary {
-    position: relative;
-
-    z-index: 2;
-
     background: white;
 
     color: var(--navy);
 
     border-color: white;
-
-    box-shadow: none;
 }
 
 
@@ -1098,7 +984,7 @@ img {
 }
 
 .faq-item p {
-    color: var(--muted);
+    color: #68778e;
 
     font-size: 12px;
 }
@@ -1148,10 +1034,6 @@ img {
     font-size: 9px;
 }
 
-.footer-links a:hover {
-    color: white;
-}
-
 
 /* =========================================================
    TABLET
@@ -1166,21 +1048,6 @@ img {
     .hero {
         min-height:
             850px;
-
-        background-position:
-            72% center;
-    }
-
-    .hero::before {
-        background:
-            linear-gradient(
-                90deg,
-                rgba(255,255,255,1) 0%,
-                rgba(255,255,255,.98) 30%,
-                rgba(255,255,255,.78) 48%,
-                rgba(255,255,255,.28) 67%,
-                rgba(255,255,255,0) 88%
-            );
     }
 
     .hero-inner {
@@ -1189,32 +1056,17 @@ img {
 
         min-height:
             778px;
-
-        padding:
-            65px 25px;
-    }
-
-    .hero h1 {
-        font-size:
-            clamp(48px,8vw,68px);
     }
 
     .reward-grid {
         grid-template-columns:
             repeat(3,minmax(0,1fr));
 
-        gap:
-            12px;
+        gap: 12px;
     }
 
     .reward-image {
-        height:
-            190px;
-    }
-
-    .reward-info h3 {
-        font-size:
-            15px;
+        height: 190px;
     }
 
     .steps,
@@ -1227,19 +1079,18 @@ img {
 
 /* =========================================================
    MOBILE
-   IMAGE FIRST → TEXT BELOW
+   BANNER IMAGE + TEXT ON LEFT + CTA BELOW
 ========================================================= */
 
 @media (max-width: 650px) {
 
 
-    /* =====================================================
+    /* -----------------------------------------------------
        NAVBAR
-    ===================================================== */
+    ----------------------------------------------------- */
 
     .navbar {
-        height:
-            72px;
+        height: 72px;
     }
 
     .nav-inner {
@@ -1253,34 +1104,23 @@ img {
     }
 
     .logo-mark {
-        width:
-            34px;
-
-        height:
-            34px;
+        width: 34px;
+        height: 34px;
     }
 
     .nav-links {
-        display:
-            none;
+        display: none;
     }
 
 
-    /* =====================================================
+    /* -----------------------------------------------------
        HERO
-    ===================================================== */
+    ----------------------------------------------------- */
 
     .hero {
 
-        /*
-         * IMPORTANT:
-         *
-         * Mobile hero is no longer using the
-         * desktop background composition.
-         */
-
         min-height:
-            1050px;
+            auto;
 
         padding-top:
             72px;
@@ -1293,9 +1133,9 @@ img {
     }
 
 
-    /* =====================================================
-       TOP IMAGE
-    ===================================================== */
+    /* -----------------------------------------------------
+       MOBILE BANNER
+    ----------------------------------------------------- */
 
     .hero::after {
 
@@ -1311,56 +1151,28 @@ img {
         left:
             0;
 
-        right:
-            0;
-
         width:
             100%;
 
         height:
-            285px;
+            325px;
 
         z-index:
             1;
 
         background:
             url("img/herobanner.png")
-            center 28% / cover no-repeat;
-
-        opacity:
-            1;
+            center center / cover no-repeat;
 
         pointer-events:
             none;
-
-        /*
-         * Fade the bottom of the image
-         * smoothly into the text section.
-         */
-
-        -webkit-mask-image:
-            linear-gradient(
-                to bottom,
-                black 0%,
-                black 65%,
-                rgba(0,0,0,.75) 80%,
-                transparent 100%
-            );
-
-        mask-image:
-            linear-gradient(
-                to bottom,
-                black 0%,
-                black 65%,
-                rgba(0,0,0,.75) 80%,
-                transparent 100%
-            );
     }
 
 
-    /* =====================================================
-       IMAGE OVERLAY
-    ===================================================== */
+    /* -----------------------------------------------------
+       WHITE FADE OVER BANNER
+       Only on LEFT so text stays readable.
+    ----------------------------------------------------- */
 
     .hero::before {
 
@@ -1376,11 +1188,11 @@ img {
         left:
             0;
 
-        right:
-            0;
+        width:
+            100%;
 
         height:
-            330px;
+            325px;
 
         z-index:
             2;
@@ -1390,18 +1202,20 @@ img {
 
         background:
             linear-gradient(
-                to bottom,
-                rgba(255,255,255,.08) 0%,
-                rgba(255,255,255,0) 50%,
-                rgba(255,255,255,.45) 78%,
-                #ffffff 100%
+                90deg,
+                rgba(255,255,255,.98) 0%,
+                rgba(255,255,255,.88) 22%,
+                rgba(255,255,255,.52) 43%,
+                rgba(255,255,255,.12) 65%,
+                rgba(255,255,255,0) 100%
             );
     }
 
 
-    /* =====================================================
+    /* -----------------------------------------------------
        HERO CONTENT
-    ===================================================== */
+       This sits ON the banner.
+    ----------------------------------------------------- */
 
     .hero-inner {
 
@@ -1409,10 +1223,13 @@ img {
             block;
 
         min-height:
-            auto;
+            0;
+
+        height:
+            325px;
 
         padding:
-            340px 20px 60px;
+            62px 20px 20px;
 
         position:
             relative;
@@ -1425,10 +1242,10 @@ img {
     .hero-copy {
 
         width:
-            100%;
+            58%;
 
         max-width:
-            100%;
+            58%;
 
         padding:
             0;
@@ -1441,53 +1258,58 @@ img {
     }
 
 
-    /* =====================================================
-       KICKER
-    ===================================================== */
+    /* -----------------------------------------------------
+       SMALL KICKER
+    ----------------------------------------------------- */
 
     .hero-kicker {
 
+        gap:
+            6px;
+
         margin-bottom:
-            20px;
+            12px;
 
         font-size:
-            9px;
+            7px;
 
         letter-spacing:
-            1.35px;
-    }
+            1.05px;
 
+        white-space:
+            nowrap;
+    }
 
     .hero-kicker span {
 
         width:
-            7px;
+            6px;
 
         height:
-            7px;
+            6px;
     }
 
 
-    /* =====================================================
-       TITLE
-    ===================================================== */
+    /* -----------------------------------------------------
+       SMALL MOBILE TITLE
+    ----------------------------------------------------- */
 
     .hero h1 {
 
         max-width:
-            370px;
+            100%;
 
         font-size:
-            clamp(40px,10.8vw,52px);
+            29px;
 
         line-height:
-            .98;
+            .99;
 
         letter-spacing:
-            -2.8px;
+            -1.65px;
 
-        color:
-            var(--navy);
+        font-weight:
+            950;
     }
 
 
@@ -1513,42 +1335,44 @@ img {
             2px;
 
         height:
-            .75em;
+            .72em;
 
         margin-left:
-            4px;
+            3px;
 
         vertical-align:
             -2px;
     }
 
 
-    /* =====================================================
+    /* -----------------------------------------------------
        DESCRIPTION
-    ===================================================== */
+       Small and compact.
+    ----------------------------------------------------- */
 
     .hero-description {
 
         max-width:
-            360px;
+            100%;
 
         margin-top:
-            23px;
-
-        font-size:
             13px;
 
-        line-height:
-            1.65;
-
         color:
-            #52647d;
+            #53657c;
+
+        font-size:
+            9px;
+
+        line-height:
+            1.45;
     }
 
 
-    /* =====================================================
-       BUTTONS
-    ===================================================== */
+    /* -----------------------------------------------------
+       CTA AREA
+       IMMEDIATELY BELOW BANNER
+    ----------------------------------------------------- */
 
     .hero-actions {
 
@@ -1558,20 +1382,26 @@ img {
         flex-direction:
             column;
 
-        align-items:
-            stretch;
-
         gap:
-            10px;
+            9px;
 
         width:
             100%;
 
-        max-width:
-            350px;
+        margin:
+            0;
 
-        margin-top:
-            27px;
+        padding:
+            14px 20px 0;
+
+        position:
+            relative;
+
+        z-index:
+            20;
+
+        background:
+            #ffffff;
     }
 
 
@@ -1581,35 +1411,52 @@ img {
             100%;
 
         min-height:
-            54px;
+            52px;
 
         font-size:
             12px;
     }
 
 
-    /* =====================================================
-       NOTE
-    ===================================================== */
+    /*
+     * Start Earning is intentionally first.
+     */
 
-    .hero-note {
-
-        margin-top:
-            17px;
-
-        font-size:
-            9px;
+    .btn-primary {
+        width:
+            100%;
     }
 
 
-    /* =====================================================
+    /* -----------------------------------------------------
+       NOTE
+       Put it below CTA instead of inside banner.
+    ----------------------------------------------------- */
+
+    .hero-note {
+
+        margin:
+            13px 20px 0;
+
+        font-size:
+            8px;
+
+        position:
+            relative;
+
+        z-index:
+            20;
+    }
+
+
+    /* -----------------------------------------------------
        TRUST
-    ===================================================== */
+    ----------------------------------------------------- */
 
     .trust-strip {
 
         margin:
-            -15px 15px 0;
+            25px 15px 0;
 
         padding:
             18px;
@@ -1643,9 +1490,9 @@ img {
     }
 
 
-    /* =====================================================
+    /* -----------------------------------------------------
        SECTIONS
-    ===================================================== */
+    ----------------------------------------------------- */
 
     .section {
 
@@ -1669,9 +1516,9 @@ img {
     }
 
 
-    /* =====================================================
+    /* -----------------------------------------------------
        REWARDS
-    ===================================================== */
+    ----------------------------------------------------- */
 
     .reward-grid {
 
@@ -1686,7 +1533,6 @@ img {
     }
 
     .reward-card {
-
         padding:
             10px;
     }
@@ -1707,19 +1553,16 @@ img {
     }
 
     .reward-info h3 {
-
         font-size:
             17px;
     }
 
     .reward-info p {
-
         font-size:
             10px;
     }
 
     .reward-arrow {
-
         font-size:
             10px;
     }
@@ -1738,9 +1581,9 @@ img {
     }
 
 
-    /* =====================================================
+    /* -----------------------------------------------------
        HOW IT WORKS
-    ===================================================== */
+    ----------------------------------------------------- */
 
     .steps {
 
@@ -1751,16 +1594,10 @@ img {
             12px;
     }
 
-    .step {
 
-        padding:
-            25px;
-    }
-
-
-    /* =====================================================
+    /* -----------------------------------------------------
        FAQ
-    ===================================================== */
+    ----------------------------------------------------- */
 
     .faq-grid {
 
@@ -1772,9 +1609,9 @@ img {
     }
 
 
-    /* =====================================================
+    /* -----------------------------------------------------
        CTA
-    ===================================================== */
+    ----------------------------------------------------- */
 
     .cta {
 
@@ -1794,16 +1631,10 @@ img {
             -1.5px;
     }
 
-    .cta p {
 
-        font-size:
-            12px;
-    }
-
-
-    /* =====================================================
+    /* -----------------------------------------------------
        FOOTER
-    ===================================================== */
+    ----------------------------------------------------- */
 
     .footer-inner {
 
@@ -1825,58 +1656,50 @@ img {
 
 @media (max-width: 380px) {
 
-    .hero {
-
-        min-height:
-            1010px;
-    }
-
-    .hero::after {
-
-        height:
-            265px;
-
-        background-position:
-            55% 25%;
-    }
-
+    .hero::after,
     .hero::before {
 
         height:
-            310px;
+            300px;
     }
 
     .hero-inner {
 
+        height:
+            300px;
+
         padding:
-            315px 17px 50px;
+            58px 17px 15px;
+    }
+
+    .hero-copy {
+
+        width:
+            60%;
+
+        max-width:
+            60%;
     }
 
     .hero h1 {
 
-        max-width:
-            335px;
-
         font-size:
-            38px;
+            27px;
 
         letter-spacing:
-            -2.4px;
+            -1.5px;
     }
 
     .hero-description {
 
-        max-width:
-            300px;
-
         font-size:
-            12px;
+            8px;
     }
 
     .hero-actions {
 
-        max-width:
-            310px;
+        padding:
+            12px 17px 0;
     }
 }
 
@@ -1923,10 +1746,7 @@ img {
                 FAQ
             </a>
 
-            <a
-                href="#how"
-                class="nav-cta"
-            >
+            <a href="#how" class="nav-cta">
                 Start Earning
             </a>
 
@@ -1981,39 +1801,10 @@ img {
 
             <p class="hero-description">
 
-                Complete simple online tasks, submit your proof,
-                and work toward digital rewards you actually want.
+                Complete simple tasks and work toward
+                digital rewards you actually want.
 
             </p>
-
-
-            <div class="hero-actions">
-
-                <a
-                    href="#how"
-                    class="btn btn-primary"
-                >
-                    Start Earning →
-                </a>
-
-
-                <a
-                    href="#rewards"
-                    class="btn btn-secondary"
-                >
-                    View Rewards
-                </a>
-
-            </div>
-
-
-            <div class="hero-note">
-
-                <strong>●</strong>
-
-                Pick a task. Complete it. Work toward your reward.
-
-            </div>
 
 
         </div>
@@ -2021,18 +1812,46 @@ img {
     </div>
 
 
-    <div class="hero-bottom-fade"></div>
+    <!-- CTA DIRECTLY BELOW BANNER -->
+
+    <div class="hero-actions">
+
+        <a
+            href="#how"
+            class="btn btn-primary"
+        >
+            Start Earning →
+        </a>
+
+
+        <a
+            href="#rewards"
+            class="btn btn-secondary"
+        >
+            View Rewards
+        </a>
+
+    </div>
+
+
+    <div class="hero-note">
+
+        <strong>●</strong>
+
+        Pick a task. Complete it. Work toward your reward.
+
+    </div>
+
 
 </header>
 
 
 
 <!-- ======================================================
-     TRUST STRIP
+     TRUST
 ====================================================== -->
 
 <div class="trust-strip">
-
 
     <div class="trust-item">
 
@@ -2072,7 +1891,6 @@ img {
 
     </div>
 
-
 </div>
 
 
@@ -2085,7 +1903,6 @@ img {
     class="section rewards-section"
     id="rewards"
 >
-
 
     <div class="section-header">
 
@@ -2106,8 +1923,6 @@ img {
 
     <div class="reward-grid">
 
-
-        <!-- VALORANT -->
 
         <div class="reward-card">
 
@@ -2136,8 +1951,6 @@ img {
         </div>
 
 
-        <!-- PLAYSTATION -->
-
         <div class="reward-card">
 
             <img
@@ -2164,8 +1977,6 @@ img {
 
         </div>
 
-
-        <!-- PUBG -->
 
         <div class="reward-card">
 
@@ -2208,7 +2019,6 @@ img {
         </span>
 
     </div>
-
 
 </section>
 
@@ -2307,9 +2117,7 @@ img {
      CTA
 ====================================================== -->
 
-<section
-    class="section cta-section"
->
+<section class="section cta-section">
 
     <div class="cta">
 
@@ -2417,11 +2225,8 @@ img {
     <div class="footer-inner">
 
         <div class="footer-copy">
-
             © 2026 Task2Get. All rights reserved.
-
         </div>
-
 
         <div class="footer-links">
 
@@ -2454,7 +2259,6 @@ img {
 const typingText =
     document.getElementById("typingText");
 
-
 const phrases = [
 
     "worth it.",
@@ -2466,7 +2270,6 @@ const phrases = [
     "something you want."
 
 ];
-
 
 let phraseIndex = 0;
 
