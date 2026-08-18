@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -221,9 +220,13 @@ img {
     font-weight: 850 !important;
 }
 
+.nav-cta:hover {
+    background: var(--blue);
+}
+
 
 /* =========================================================
-   HERO DESKTOP
+   HERO
 ========================================================= */
 
 .hero {
@@ -244,7 +247,7 @@ img {
 
 
 /* =========================================================
-   DESKTOP OVERLAY
+   DESKTOP HERO GRADIENT
 ========================================================= */
 
 .hero::before {
@@ -280,7 +283,7 @@ img {
 
 
 /* =========================================================
-   GRID
+   HERO GRID
 ========================================================= */
 
 .hero-grid {
@@ -305,8 +308,14 @@ img {
             transparent 1px
         );
 
-    background-size:
-        58px 58px;
+    background-size: 58px 58px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black 0%,
+            transparent 90%
+        );
 }
 
 
@@ -325,8 +334,7 @@ img {
 
     display: grid;
 
-    grid-template-columns:
-        54% 46%;
+    grid-template-columns: 54% 46%;
 
     align-items: center;
 
@@ -468,7 +476,7 @@ img {
 
 
 /* =========================================================
-   ACTIONS
+   CTA
 ========================================================= */
 
 .hero-actions {
@@ -518,8 +526,7 @@ img {
 
     border-color: var(--navy);
 
-    transform:
-        translateY(-2px);
+    transform: translateY(-2px);
 }
 
 .btn-secondary {
@@ -530,6 +537,14 @@ img {
 
     border:
         1px solid #d8e0eb;
+}
+
+.btn-secondary:hover {
+    background: white;
+
+    border-color: #aab8cc;
+
+    transform: translateY(-1px);
 }
 
 
@@ -557,7 +572,7 @@ img {
 
 
 /* =========================================================
-   TRUST
+   TRUST STRIP
 ========================================================= */
 
 .trust-strip {
@@ -576,16 +591,14 @@ img {
 
     border-radius: 8px;
 
-    padding:
-        19px 22px;
+    padding: 19px 22px;
 
     display: grid;
 
     grid-template-columns:
         repeat(3,1fr);
 
-    box-shadow:
-        var(--shadow);
+    box-shadow: var(--shadow);
 }
 
 .trust-item {
@@ -627,15 +640,13 @@ img {
 
     margin: auto;
 
-    padding:
-        105px 25px;
+    padding: 105px 25px;
 }
 
 .section-header {
     max-width: 680px;
 
-    margin:
-        0 auto 45px;
+    margin: 0 auto 45px;
 
     text-align: center;
 }
@@ -718,13 +729,18 @@ img {
 
     overflow: hidden;
 
-    transition: .25s;
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
 }
 
 .reward-card:hover {
     transform:
         translateY(-7px)
         scale(1.015);
+
+    border-color: #b9c9e3;
 
     box-shadow:
         0 20px 45px rgba(16,42,86,.13);
@@ -741,15 +757,19 @@ img {
 
     padding: 15px;
 
-    background:
-        #f1f4f9;
+    background: #f1f4f9;
 
     border-radius: 8px;
+
+    transition: transform .3s ease;
+}
+
+.reward-card:hover .reward-image {
+    transform: scale(1.045);
 }
 
 .reward-info {
-    padding:
-        17px 5px 8px;
+    padding: 17px 5px 8px;
 }
 
 .reward-info h3 {
@@ -780,11 +800,6 @@ img {
     font-weight: 850;
 }
 
-
-/* =========================================================
-   REWARD FOOTER
-========================================================= */
-
 .reward-footer {
     max-width: 1080px;
 
@@ -810,15 +825,14 @@ img {
 }
 
 .reward-footer span {
-    color:
-        rgba(255,255,255,.58);
+    color: rgba(255,255,255,.58);
 
     font-size: 10px;
 }
 
 
 /* =========================================================
-   STEPS
+   HOW IT WORKS
 ========================================================= */
 
 .steps {
@@ -844,11 +858,9 @@ img {
 }
 
 .step:hover {
-    transform:
-        translateY(-4px);
+    transform: translateY(-4px);
 
-    box-shadow:
-        var(--shadow);
+    box-shadow: var(--shadow);
 }
 
 .step-number {
@@ -890,7 +902,7 @@ img {
 
 
 /* =========================================================
-   CTA
+   CTA SECTION
 ========================================================= */
 
 .cta-section {
@@ -902,8 +914,7 @@ img {
 
     overflow: hidden;
 
-    padding:
-        70px 25px;
+    padding: 70px 25px;
 
     text-align: center;
 
@@ -912,6 +923,9 @@ img {
     color: white;
 
     border-radius: 10px;
+
+    box-shadow:
+        0 22px 50px rgba(16,42,86,.14);
 }
 
 .cta h2 {
@@ -933,8 +947,7 @@ img {
 
     max-width: 500px;
 
-    margin:
-        10px auto 26px;
+    margin: 10px auto 26px;
 
     color:
         rgba(255,255,255,.58);
@@ -948,6 +961,8 @@ img {
     color: var(--navy);
 
     border-color: white;
+
+    box-shadow: none;
 }
 
 
@@ -995,8 +1010,7 @@ img {
 ========================================================= */
 
 .footer {
-    background:
-        #0b1d3b;
+    background: #0b1d3b;
 
     color: white;
 }
@@ -1006,8 +1020,7 @@ img {
 
     margin: auto;
 
-    padding:
-        28px 25px;
+    padding: 28px 25px;
 
     display: flex;
 
@@ -1046,16 +1059,18 @@ img {
     }
 
     .hero {
-        min-height:
-            850px;
+        min-height: 850px;
     }
 
     .hero-inner {
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
 
-        min-height:
-            778px;
+        min-height: 778px;
+    }
+
+    .hero h1 {
+        font-size:
+            clamp(48px,8vw,68px);
     }
 
     .reward-grid {
@@ -1069,6 +1084,10 @@ img {
         height: 190px;
     }
 
+    .reward-info h3 {
+        font-size: 15px;
+    }
+
     .steps,
     .faq-grid {
         grid-template-columns:
@@ -1078,8 +1097,80 @@ img {
 
 
 /* =========================================================
+   DESKTOP CTA POSITIONING
+   ---------------------------------------------------------
+   IMPORTANT:
+   The HTML places the CTA after .hero-inner because
+   mobile needs it directly underneath the banner.
+
+   On desktop we move it back visually underneath the
+   hero text.
+========================================================= */
+
+@media (min-width: 651px) {
+
+    .hero-actions {
+
+        position: absolute;
+
+        left:
+            max(
+                calc((100% - 1130px) / 2),
+                25px
+            );
+
+        top:
+            535px;
+
+        z-index: 20;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 10px;
+
+        margin: 0;
+
+        padding: 0;
+
+        background: transparent;
+    }
+
+    .hero-note {
+
+        position: absolute;
+
+        left:
+            max(
+                calc((100% - 1130px) / 2),
+                25px
+            );
+
+        top:
+            600px;
+
+        z-index: 20;
+
+        margin: 0;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 7px;
+
+        color:
+            #718198;
+
+        font-size:
+            10px;
+    }
+}
+
+
+/* =========================================================
    MOBILE
-   BANNER IMAGE + TEXT ON LEFT + CTA BELOW
 ========================================================= */
 
 @media (max-width: 650px) {
@@ -1094,13 +1185,11 @@ img {
     }
 
     .nav-inner {
-        padding:
-            0 18px;
+        padding: 0 18px;
     }
 
     .logo {
-        font-size:
-            20px;
+        font-size: 20px;
     }
 
     .logo-mark {
@@ -1119,318 +1208,238 @@ img {
 
     .hero {
 
-        min-height:
-            auto;
+        min-height: auto;
 
-        padding-top:
-            72px;
+        padding-top: 72px;
 
-        background:
-            #ffffff;
+        background: #ffffff;
 
-        overflow:
-            hidden;
+        overflow: hidden;
     }
 
 
     /* -----------------------------------------------------
-       MOBILE BANNER
+       MOBILE IMAGE BANNER
     ----------------------------------------------------- */
 
     .hero::after {
 
-        content:
-            "";
+        content: "";
 
-        position:
-            absolute;
+        position: absolute;
 
-        top:
-            72px;
+        top: 72px;
 
-        left:
-            0;
+        left: 0;
 
-        width:
-            100%;
+        width: 100%;
 
-        height:
-            325px;
+        height: 325px;
 
-        z-index:
-            1;
+        z-index: 1;
 
         background:
             url("img/herobanner.png")
             center center / cover no-repeat;
 
-        pointer-events:
-            none;
+        pointer-events: none;
     }
 
 
     /* -----------------------------------------------------
-       WHITE FADE OVER BANNER
-       Only on LEFT so text stays readable.
+       LEFT SIDE WHITE FADE
     ----------------------------------------------------- */
 
     .hero::before {
 
-        content:
-            "";
+        content: "";
 
-        position:
-            absolute;
+        position: absolute;
 
-        top:
-            72px;
+        top: 72px;
 
-        left:
-            0;
+        left: 0;
 
-        width:
-            100%;
+        width: 100%;
 
-        height:
-            325px;
+        height: 325px;
 
-        z-index:
-            2;
+        z-index: 2;
 
-        pointer-events:
-            none;
+        pointer-events: none;
 
         background:
             linear-gradient(
                 90deg,
+
                 rgba(255,255,255,.98) 0%,
+
                 rgba(255,255,255,.88) 22%,
+
                 rgba(255,255,255,.52) 43%,
+
                 rgba(255,255,255,.12) 65%,
+
                 rgba(255,255,255,0) 100%
             );
     }
 
 
     /* -----------------------------------------------------
-       HERO CONTENT
-       This sits ON the banner.
+       MOBILE TEXT ON LEFT OF GIRL
     ----------------------------------------------------- */
 
     .hero-inner {
 
-        display:
-            block;
+        display: block;
 
-        min-height:
-            0;
+        min-height: 0;
 
-        height:
-            325px;
+        height: 325px;
 
         padding:
             62px 20px 20px;
 
-        position:
-            relative;
+        position: relative;
 
-        z-index:
-            10;
+        z-index: 10;
     }
-
 
     .hero-copy {
 
-        width:
-            58%;
+        width: 58%;
 
-        max-width:
-            58%;
+        max-width: 58%;
 
-        padding:
-            0;
+        padding: 0;
 
-        position:
-            relative;
+        position: relative;
 
-        z-index:
-            20;
+        z-index: 20;
     }
 
 
     /* -----------------------------------------------------
-       SMALL KICKER
+       KICKER
     ----------------------------------------------------- */
 
     .hero-kicker {
 
-        gap:
-            6px;
+        gap: 6px;
 
-        margin-bottom:
-            12px;
+        margin-bottom: 12px;
 
-        font-size:
-            7px;
+        font-size: 7px;
 
-        letter-spacing:
-            1.05px;
+        letter-spacing: 1.05px;
 
-        white-space:
-            nowrap;
+        white-space: nowrap;
     }
 
     .hero-kicker span {
 
-        width:
-            6px;
+        width: 6px;
 
-        height:
-            6px;
+        height: 6px;
     }
 
 
     /* -----------------------------------------------------
-       SMALL MOBILE TITLE
+       TITLE
     ----------------------------------------------------- */
 
     .hero h1 {
 
-        max-width:
-            100%;
+        max-width: 100%;
 
-        font-size:
-            29px;
+        font-size: 29px;
 
-        line-height:
-            .99;
+        line-height: .99;
 
-        letter-spacing:
-            -1.65px;
+        letter-spacing: -1.65px;
 
-        font-weight:
-            950;
+        font-weight: 950;
     }
-
 
     .hero h1 .typing-word {
 
-        min-width:
-            0;
+        min-width: 0;
 
-        display:
-            inline;
+        display: inline;
 
-        white-space:
-            normal;
+        white-space: normal;
 
-        color:
-            var(--blue);
+        color: var(--blue);
     }
-
 
     .hero h1 .typing-word::after {
 
-        width:
-            2px;
+        width: 2px;
 
-        height:
-            .72em;
+        height: .72em;
 
-        margin-left:
-            3px;
+        margin-left: 3px;
 
-        vertical-align:
-            -2px;
+        vertical-align: -2px;
     }
 
 
     /* -----------------------------------------------------
        DESCRIPTION
-       Small and compact.
     ----------------------------------------------------- */
 
     .hero-description {
 
-        max-width:
-            100%;
+        max-width: 100%;
 
-        margin-top:
-            13px;
+        margin-top: 13px;
 
-        color:
-            #53657c;
+        color: #53657c;
 
-        font-size:
-            9px;
+        font-size: 9px;
 
-        line-height:
-            1.45;
+        line-height: 1.45;
     }
 
 
     /* -----------------------------------------------------
-       CTA AREA
-       IMMEDIATELY BELOW BANNER
+       MOBILE CTA DIRECTLY UNDER BANNER
     ----------------------------------------------------- */
 
     .hero-actions {
 
-        display:
-            flex;
+        display: flex;
 
-        flex-direction:
-            column;
+        flex-direction: column;
 
-        gap:
-            9px;
+        gap: 9px;
 
-        width:
-            100%;
+        width: 100%;
 
-        margin:
-            0;
+        margin: 0;
 
         padding:
             14px 20px 0;
 
-        position:
-            relative;
+        position: relative;
 
-        z-index:
-            20;
+        z-index: 20;
 
-        background:
-            #ffffff;
+        background: #ffffff;
     }
-
 
     .btn {
 
-        width:
-            100%;
+        width: 100%;
 
-        min-height:
-            52px;
+        min-height: 52px;
 
-        font-size:
-            12px;
-    }
-
-
-    /*
-     * Start Earning is intentionally first.
-     */
-
-    .btn-primary {
-        width:
-            100%;
+        font-size: 12px;
     }
 
 
     /* -----------------------------------------------------
-       NOTE
-       Put it below CTA instead of inside banner.
+       MOBILE NOTE
     ----------------------------------------------------- */
 
     .hero-note {
@@ -1438,14 +1447,11 @@ img {
         margin:
             13px 20px 0;
 
-        font-size:
-            8px;
+        font-size: 8px;
 
-        position:
-            relative;
+        position: relative;
 
-        z-index:
-            20;
+        z-index: 20;
     }
 
 
@@ -1458,23 +1464,18 @@ img {
         margin:
             25px 15px 0;
 
-        padding:
-            18px;
+        padding: 18px;
 
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
 
-        gap:
-            13px;
+        gap: 13px;
     }
 
     .trust-item {
 
-        padding-bottom:
-            12px;
+        padding-bottom: 12px;
 
-        border-right:
-            none;
+        border-right: none;
 
         border-bottom:
             1px solid var(--border);
@@ -1482,11 +1483,9 @@ img {
 
     .trust-item:last-child {
 
-        padding-bottom:
-            0;
+        padding-bottom: 0;
 
-        border-bottom:
-            none;
+        border-bottom: none;
     }
 
 
@@ -1495,24 +1494,20 @@ img {
     ----------------------------------------------------- */
 
     .section {
-
         padding:
             70px 18px;
     }
 
     .section-header {
-
         margin-bottom:
             30px;
     }
 
     .section-header h2 {
 
-        font-size:
-            30px;
+        font-size: 30px;
 
-        letter-spacing:
-            -1.5px;
+        letter-spacing: -1.5px;
     }
 
 
@@ -1522,28 +1517,22 @@ img {
 
     .reward-grid {
 
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
 
-        gap:
-            15px;
+        gap: 15px;
 
-        max-width:
-            390px;
+        max-width: 390px;
     }
 
     .reward-card {
-        padding:
-            10px;
+        padding: 10px;
     }
 
     .reward-image {
 
-        height:
-            220px;
+        height: 220px;
 
-        padding:
-            12px;
+        padding: 12px;
     }
 
     .reward-info {
@@ -1553,31 +1542,24 @@ img {
     }
 
     .reward-info h3 {
-        font-size:
-            17px;
+        font-size: 17px;
     }
 
     .reward-info p {
-        font-size:
-            10px;
+        font-size: 10px;
     }
 
     .reward-arrow {
-        font-size:
-            10px;
+        font-size: 10px;
     }
-
 
     .reward-footer {
 
-        flex-direction:
-            column;
+        flex-direction: column;
 
-        align-items:
-            flex-start;
+        align-items: flex-start;
 
-        gap:
-            5px;
+        gap: 5px;
     }
 
 
@@ -1587,11 +1569,13 @@ img {
 
     .steps {
 
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
 
-        gap:
-            12px;
+        gap: 12px;
+    }
+
+    .step {
+        padding: 25px;
     }
 
 
@@ -1601,11 +1585,9 @@ img {
 
     .faq-grid {
 
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
 
-        gap:
-            12px;
+        gap: 12px;
     }
 
 
@@ -1618,17 +1600,18 @@ img {
         padding:
             55px 20px;
 
-        border-radius:
-            9px;
+        border-radius: 9px;
     }
 
     .cta h2 {
 
-        font-size:
-            30px;
+        font-size: 30px;
 
-        letter-spacing:
-            -1.5px;
+        letter-spacing: -1.5px;
+    }
+
+    .cta p {
+        font-size: 12px;
     }
 
 
@@ -1638,14 +1621,11 @@ img {
 
     .footer-inner {
 
-        flex-direction:
-            column;
+        flex-direction: column;
 
-        gap:
-            12px;
+        gap: 12px;
 
-        text-align:
-            center;
+        text-align: center;
     }
 }
 
@@ -1659,14 +1639,12 @@ img {
     .hero::after,
     .hero::before {
 
-        height:
-            300px;
+        height: 300px;
     }
 
     .hero-inner {
 
-        height:
-            300px;
+        height: 300px;
 
         padding:
             58px 17px 15px;
@@ -1674,26 +1652,20 @@ img {
 
     .hero-copy {
 
-        width:
-            60%;
+        width: 60%;
 
-        max-width:
-            60%;
+        max-width: 60%;
     }
 
     .hero h1 {
 
-        font-size:
-            27px;
+        font-size: 27px;
 
-        letter-spacing:
-            -1.5px;
+        letter-spacing: -1.5px;
     }
 
     .hero-description {
-
-        font-size:
-            8px;
+        font-size: 8px;
     }
 
     .hero-actions {
@@ -1704,7 +1676,6 @@ img {
 }
 
 </style>
-
 </head>
 
 
@@ -1771,7 +1742,6 @@ img {
 
         <div class="hero-copy">
 
-
             <div class="hero-kicker">
 
                 <span></span>
@@ -1806,13 +1776,16 @@ img {
 
             </p>
 
-
         </div>
 
     </div>
 
 
-    <!-- CTA DIRECTLY BELOW BANNER -->
+    <!-- ==================================================
+         CTA
+         Desktop: positioned under hero text
+         Mobile: immediately below banner
+    ================================================== -->
 
     <div class="hero-actions">
 
@@ -1842,13 +1815,12 @@ img {
 
     </div>
 
-
 </header>
 
 
 
 <!-- ======================================================
-     TRUST
+     TRUST STRIP
 ====================================================== -->
 
 <div class="trust-strip">
@@ -1924,6 +1896,8 @@ img {
     <div class="reward-grid">
 
 
+        <!-- VALORANT -->
+
         <div class="reward-card">
 
             <img
@@ -1950,6 +1924,8 @@ img {
 
         </div>
 
+
+        <!-- PLAYSTATION -->
 
         <div class="reward-card">
 
@@ -1978,6 +1954,8 @@ img {
         </div>
 
 
+        <!-- PUBG -->
+
         <div class="reward-card">
 
             <img
@@ -2003,7 +1981,6 @@ img {
             </div>
 
         </div>
-
 
     </div>
 
@@ -2106,7 +2083,6 @@ img {
 
         </div>
 
-
     </div>
 
 </section>
@@ -2114,7 +2090,7 @@ img {
 
 
 <!-- ======================================================
-     CTA
+     CTA SECTION
 ====================================================== -->
 
 <section class="section cta-section">
@@ -2209,7 +2185,6 @@ img {
 
         </div>
 
-
     </div>
 
 </section>
@@ -2225,8 +2200,11 @@ img {
     <div class="footer-inner">
 
         <div class="footer-copy">
+
             © 2026 Task2Get. All rights reserved.
+
         </div>
+
 
         <div class="footer-links">
 
@@ -2259,6 +2237,7 @@ img {
 const typingText =
     document.getElementById("typingText");
 
+
 const phrases = [
 
     "worth it.",
@@ -2270,6 +2249,7 @@ const phrases = [
     "something you want."
 
 ];
+
 
 let phraseIndex = 0;
 
@@ -2284,6 +2264,10 @@ function typeAnimation() {
     const currentPhrase =
         phrases[phraseIndex];
 
+
+    /* ---------------------------------------------
+       DELETE
+    --------------------------------------------- */
 
     if (deleting) {
 
@@ -2321,6 +2305,10 @@ function typeAnimation() {
         return;
     }
 
+
+    /* ---------------------------------------------
+       TYPE
+    --------------------------------------------- */
 
     const nextPhrase =
         phrases[phraseIndex];
