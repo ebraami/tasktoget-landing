@@ -1,2421 +1,548 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Task2Get — Coming Soon</title>
+
+    <style>
+        :root {
+            --navy: #102d5c;
+            --blue: #2161df;
+            --blue-hover: #174fc2;
+            --white: #ffffff;
+            --bg: #f6f8fc;
+            --text: #10203a;
+            --muted: #64748b;
+            --border: #dde5ef;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            background: var(--bg);
+            color: var(--text);
+
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            height: 76px;
+            background: #fff;
+            border-bottom: 1px solid #e8edf4;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-inner {
+            width: min(100% - 40px, 1320px);
+            margin: 0 auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+
+            color: var(--navy);
+            text-decoration: none;
+
+            font-size: 23px;
+            font-weight: 900;
+            letter-spacing: -1.2px;
+        }
+
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 7px;
+            background: var(--navy);
+            color: white;
+
+            font-size: 17px;
+            font-weight: 900;
+        }
 
-<title>Task2Get — Earn Rewards</title>
+        .logo-mark::after {
+            content: "2";
 
-<style>
+            position: absolute;
+            right: 5px;
+            bottom: 3px;
 
-/* =========================================================
-   VARIABLES
-========================================================= */
+            font-size: 8px;
+            color: #77a4ff;
+        }
 
-:root {
-    --navy: #102d5c;
-    --navy-dark: #0a2148;
-    --blue: #2161df;
-    --blue-hover: #174fc2;
+        .logo-text span {
+            color: var(--blue);
+        }
 
-    --white: #ffffff;
-    --bg: #f6f8fc;
+        /* =========================
+           MAIN
+        ========================= */
 
-    --text: #10203a;
-    --muted: #64748b;
+        .coming-soon {
+            position: relative;
+            flex: 1;
 
-    --border: #dde5ef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    --shadow:
-        0 18px 45px rgba(16,45,92,.09);
-}
+            overflow: hidden;
+            padding: 70px 20px;
+        }
 
+        /* Background grid */
 
-/* =========================================================
-   RESET
-========================================================= */
+        .coming-soon::before {
+            content: "";
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+            position: absolute;
+            inset: 0;
 
-html {
-    scroll-behavior: smooth;
-}
+            background-image:
+                linear-gradient(
+                    rgba(16,45,92,.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(16,45,92,.035) 1px,
+                    transparent 1px
+                );
 
-body {
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
+            background-size: 58px 58px;
+        }
 
-    background: var(--bg);
-    color: var(--text);
+        /* Soft background glow */
 
-    line-height: 1.5;
+        .coming-soon::after {
+            content: "";
 
-    overflow-x: hidden;
+            position: absolute;
 
-    -webkit-font-smoothing: antialiased;
-}
+            width: 600px;
+            height: 600px;
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
+            border-radius: 50%;
 
-img {
-    display: block;
-    max-width: 100%;
-}
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(33,97,223,.12) 0%,
+                    rgba(33,97,223,.05) 35%,
+                    transparent 70%
+                );
 
+            top: 50%;
+            left: 50%;
 
-/* =========================================================
-   NAVBAR
-========================================================= */
+            transform: translate(-50%, -50%);
 
-.navbar {
-    height: 76px;
+            pointer-events: none;
+        }
 
-    position: relative;
+        .content {
+            position: relative;
+            z-index: 2;
 
-    z-index: 100;
+            width: 100%;
+            max-width: 760px;
 
-    background: #fff;
+            text-align: center;
+        }
 
-    border-bottom:
-        1px solid #e8edf4;
-}
+        /* Status */
 
-.nav-inner {
-    width:
-        min(100% - 40px, 1320px);
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
 
-    height: 100%;
+            margin-bottom: 25px;
 
-    margin: 0 auto;
+            color: var(--blue);
 
-    display: flex;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+        }
 
-    align-items: center;
+        .status-dot {
+            width: 8px;
+            height: 8px;
 
-    justify-content: space-between;
-}
+            border-radius: 50%;
+            background: var(--blue);
 
+            box-shadow:
+                0 0 0 5px rgba(33,97,223,.10);
 
-/* =========================================================
-   LOGO
-========================================================= */
+            animation: pulse 1.8s infinite;
+        }
 
-.logo {
-    display: flex;
+        @keyframes pulse {
+            0% {
+                box-shadow:
+                    0 0 0 0 rgba(33,97,223,.25);
+            }
 
-    align-items: center;
+            70% {
+                box-shadow:
+                    0 0 0 8px rgba(33,97,223,0);
+            }
 
-    gap: 11px;
+            100% {
+                box-shadow:
+                    0 0 0 0 rgba(33,97,223,0);
+            }
+        }
 
-    font-weight: 900;
+        /* Heading */
 
-    font-size: 23px;
+        h1 {
+            color: var(--navy);
 
-    letter-spacing: -1.2px;
+            font-size: clamp(48px, 7vw, 86px);
+            line-height: .98;
 
-    color: var(--navy);
-}
+            letter-spacing: -4px;
+            font-weight: 950;
+        }
 
-.logo-mark {
-    width: 40px;
-    height: 40px;
+        h1 span {
+            color: var(--blue);
+        }
 
-    position: relative;
+        .description {
+            max-width: 560px;
 
-    display: flex;
+            margin: 25px auto 0;
 
-    align-items: center;
+            color: var(--muted);
 
-    justify-content: center;
+            font-size: 16px;
+            line-height: 1.7;
+        }
 
-    border-radius: 7px;
+        /* Card */
 
-    background: var(--navy);
+        .coming-card {
+            max-width: 580px;
 
-    color: white;
+            margin: 38px auto 0;
+            padding: 28px;
 
-    font-size: 17px;
+            background: rgba(255,255,255,.92);
 
-    font-weight: 900;
-}
+            border: 1px solid var(--border);
+            border-radius: 12px;
 
-.logo-mark::after {
-    content: "2";
+            box-shadow:
+                0 18px 45px rgba(16,45,92,.09);
 
-    position: absolute;
+            backdrop-filter: blur(10px);
+        }
 
-    right: 5px;
-    bottom: 3px;
+        .coming-card h2 {
+            color: var(--navy);
 
-    font-size: 8px;
+            font-size: 18px;
+            font-weight: 900;
+        }
 
-    color: #77a4ff;
-}
+        .coming-card p {
+            margin-top: 7px;
 
-.logo-text span {
-    color: var(--blue);
-}
+            color: var(--muted);
 
+            font-size: 13px;
+            line-height: 1.6;
+        }
 
-/* =========================================================
-   NAV LINKS
-========================================================= */
+        /* Button */
 
-.nav-links {
-    display: flex;
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
 
-    align-items: center;
+            min-height: 50px;
 
-    gap: 34px;
-}
+            margin-top: 22px;
+            padding: 0 25px;
 
-.nav-links a {
-    font-size: 13px;
+            border-radius: 7px;
 
-    font-weight: 700;
+            background: var(--blue);
+            border: 1px solid var(--blue);
 
-    color: #64748b;
-}
+            color: #fff;
+            text-decoration: none;
 
-.nav-links a:hover {
-    color: var(--blue);
-}
+            font-size: 12px;
+            font-weight: 850;
 
-.nav-links .nav-cta {
-    padding: 13px 20px;
+            box-shadow:
+                0 10px 25px rgba(33,97,223,.16);
 
-    border-radius: 7px;
+            transition:
+                transform .2s ease,
+                background .2s ease;
+        }
 
-    background: var(--navy);
+        .button:hover {
+            background: var(--blue-hover);
+            transform: translateY(-2px);
+        }
 
-    color: #fff;
-}
+        /* =========================
+           FOOTER
+        ========================= */
 
-.nav-links .nav-cta:hover {
-    color: #fff;
+        .footer {
+            background: #0a1d3b;
+            color: #fff;
+        }
 
-    background: var(--blue);
-}
+        .footer-inner {
+            width: min(100% - 40px, 1180px);
 
+            margin: 0 auto;
+            padding: 25px 0;
 
-/* =========================================================
-   HERO
-========================================================= */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-.hero {
-    position: relative;
+        .footer-copy {
+            color: rgba(255,255,255,.48);
+            font-size: 9px;
+        }
 
-    min-height: 725px;
+        .footer-contact {
+            color: rgba(255,255,255,.65);
 
-    overflow: hidden;
+            font-size: 10px;
+            text-decoration: none;
+        }
 
-    background: #fff;
-}
+        .footer-contact:hover {
+            color: #fff;
+        }
 
+        /* =========================
+           MOBILE
+        ========================= */
 
-/* =========================================================
-   HERO BACKGROUND
-========================================================= */
+        @media (max-width: 650px) {
 
-.hero-background {
-    position: absolute;
+            .navbar {
+                height: 70px;
+            }
 
-    inset: 0;
+            .nav-inner {
+                width: 100%;
+                padding: 0 25px;
+            }
 
-    z-index: 0;
+            .logo {
+                font-size: 21px;
+            }
 
-    background-image:
-        url("img/herobanner.png");
+            .logo-mark {
+                width: 38px;
+                height: 38px;
+            }
 
-    background-size: cover;
+            .coming-soon {
+                padding: 55px 22px;
+            }
 
-    background-position:
-        center right;
+            h1 {
+                font-size: 48px;
+                letter-spacing: -2.5px;
+            }
 
-    background-repeat: no-repeat;
-}
+            .description {
+                font-size: 13px;
+                margin-top: 20px;
+            }
 
+            .coming-card {
+                margin-top: 30px;
+                padding: 23px 18px;
+            }
 
-/* =========================================================
-   HERO FADE
-========================================================= */
+            .coming-card h2 {
+                font-size: 16px;
+            }
 
-.hero-background::after {
-    content: "";
+            .coming-card p {
+                font-size: 12px;
+            }
 
-    position: absolute;
+            .button {
+                width: 100%;
+            }
 
-    inset: 0;
+            .footer-inner {
+                flex-direction: column;
+                gap: 10px;
 
-    background:
-        linear-gradient(
-            90deg,
-
-            #ffffff 0%,
-
-            rgba(255,255,255,.99) 20%,
-
-            rgba(255,255,255,.94) 32%,
-
-            rgba(255,255,255,.78) 43%,
-
-            rgba(255,255,255,.43) 54%,
-
-            rgba(255,255,255,.08) 67%,
-
-            rgba(255,255,255,0) 78%
-        );
-}
-
-
-/* =========================================================
-   GRID
-========================================================= */
-
-.hero-grid {
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 1;
-
-    pointer-events: none;
-
-    background-image:
-        linear-gradient(
-            rgba(16,45,92,.022) 1px,
-            transparent 1px
-        ),
-
-        linear-gradient(
-            90deg,
-            rgba(16,45,92,.022) 1px,
-            transparent 1px
-        );
-
-    background-size:
-        58px 58px;
-}
-
-
-/* =========================================================
-   HERO INNER
-========================================================= */
-
-.hero-inner {
-    position: relative;
-
-    z-index: 5;
-
-    width:
-        min(100% - 40px, 1320px);
-
-    min-height: 725px;
-
-    margin: 0 auto;
-
-    display: flex;
-
-    align-items: center;
-}
-
-
-/* =========================================================
-   HERO COPY
-========================================================= */
-
-.hero-copy {
-    width: 610px;
-
-    max-width: 48%;
-
-    margin-top: -5px;
-}
-
-
-/* =========================================================
-   KICKER
-========================================================= */
-
-.hero-kicker {
-    display: flex;
-
-    align-items: center;
-
-    gap: 9px;
-
-    margin-bottom: 26px;
-
-    color: var(--blue);
-
-    font-size: 11px;
-
-    line-height: 1;
-
-    font-weight: 900;
-
-    letter-spacing: 1.6px;
-
-    text-transform: uppercase;
-}
-
-.hero-kicker-dot {
-    width: 8px;
-    height: 8px;
-
-    flex: 0 0 8px;
-
-    border-radius: 50%;
-
-    background: var(--blue);
-}
-
-
-/* =========================================================
-   HERO TITLE
-========================================================= */
-
-.hero-title {
-    color: var(--navy);
-
-    font-size:
-        clamp(52px,4.4vw,72px);
-
-    line-height: .98;
-
-    letter-spacing: -4px;
-
-    font-weight: 950;
-}
-
-.title-line {
-    display: block;
-}
-
-
-/* =========================================================
-   TYPING LINE
-========================================================= */
-
-.typing-line {
-    display: block;
-
-    min-height: 1.08em;
-
-    margin-top: 5px;
-
-    color: var(--blue);
-}
-
-.typing-word {
-    display: inline;
-}
-
-
-/* =========================================================
-   CURSOR
-========================================================= */
-
-.typing-word::after {
-    content: "";
-
-    display: inline-block;
-
-    width: 3px;
-
-    height: .78em;
-
-    margin-left: 6px;
-
-    vertical-align: -3px;
-
-    background: var(--blue);
-
-    animation:
-        blink .8s infinite;
-}
-
-@keyframes blink {
-
-    0%,
-    45% {
-        opacity: 1;
-    }
-
-    46%,
-    100% {
-        opacity: 0;
-    }
-}
-
-
-/* =========================================================
-   DESCRIPTION
-========================================================= */
-
-.hero-description {
-    width: 500px;
-
-    max-width: 100%;
-
-    margin-top: 21px;
-
-    color: #53657d;
-
-    font-size: 15px;
-
-    line-height: 1.65;
-}
-
-
-/* =========================================================
-   HERO BUTTONS
-========================================================= */
-
-.hero-actions {
-    display: flex;
-
-    align-items: center;
-
-    gap: 11px;
-
-    margin-top: 26px;
-
-    position: static;
-}
-
-.btn {
-    min-height: 50px;
-
-    padding: 0 23px;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 7px;
-
-    font-size: 12px;
-
-    font-weight: 850;
-
-    transition:
-        transform .2s ease,
-        background .2s ease,
-        border-color .2s ease;
-}
-
-.btn-primary {
-    background: var(--blue);
-
-    border:
-        1px solid var(--blue);
-
-    color: #fff;
-
-    box-shadow:
-        0 10px 25px rgba(33,97,223,.16);
-}
-
-.btn-primary:hover {
-    background: var(--blue-hover);
-
-    border-color: var(--blue-hover);
-
-    transform:
-        translateY(-2px);
-}
-
-.btn-secondary {
-    background:
-        rgba(255,255,255,.94);
-
-    border:
-        1px solid #d4deeb;
-
-    color: var(--navy);
-}
-
-.btn-secondary:hover {
-    background: #fff;
-
-    border-color: #aebdd1;
-
-    transform:
-        translateY(-2px);
-}
-
-
-/* =========================================================
-   HERO NOTE
-========================================================= */
-
-.hero-note {
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    margin-top: 17px;
-
-    color: #74849a;
-
-    font-size: 10px;
-
-    position: static;
-}
-
-.hero-note-dot {
-    width: 6px;
-    height: 6px;
-
-    flex: 0 0 6px;
-
-    border-radius: 50%;
-
-    background: var(--blue);
-}
-
-
-/* =========================================================
-   TRUST
-========================================================= */
-
-.trust-wrap {
-    background: #fff;
-
-    padding: 0 20px;
-}
-
-.trust-strip {
-    position: relative;
-
-    z-index: 10;
-
-    width:
-        min(100%,1050px);
-
-    margin:
-        -30px auto 0;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    padding: 20px;
-
-    background: #fff;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 10px;
-
-    box-shadow: var(--shadow);
-}
-
-.trust-item {
-    padding:
-        3px 20px;
-
-    text-align: center;
-
-    border-right:
-        1px solid var(--border);
-}
-
-.trust-item:last-child {
-    border-right: none;
-}
-
-.trust-item strong {
-    display: block;
-
-    color: var(--navy);
-
-    font-size: 12px;
-}
-
-.trust-item span {
-    display: block;
-
-    margin-top: 3px;
-
-    color: var(--muted);
-
-    font-size: 10px;
-}
-
-
-/* =========================================================
-   SECTIONS
-========================================================= */
-
-.section {
-    width:
-        min(100% - 40px,1180px);
-
-    margin: 0 auto;
-
-    padding:
-        100px 0;
-}
-
-.section-header {
-    max-width: 680px;
-
-    margin:
-        0 auto 44px;
-
-    text-align: center;
-}
-
-.section-kicker {
-    display: block;
-
-    margin-bottom: 10px;
-
-    color: var(--blue);
-
-    font-size: 9px;
-
-    font-weight: 900;
-
-    letter-spacing: 1.6px;
-
-    text-transform: uppercase;
-}
-
-.section-header h2 {
-    color: var(--navy);
-
-    font-size: 39px;
-
-    line-height: 1.08;
-
-    letter-spacing: -2px;
-
-    font-weight: 900;
-}
-
-.section-header p {
-    margin-top: 10px;
-
-    color: var(--muted);
-
-    font-size: 13px;
-}
-
-
-/* =========================================================
-   REWARDS
-========================================================= */
-
-.rewards-section-wrap {
-    margin-top: 80px;
-
-    background: var(--bg);
-
-    border-top:
-        1px solid var(--border);
-
-    border-bottom:
-        1px solid var(--border);
-}
-
-.reward-grid {
-    max-width: 1080px;
-
-    margin: 0 auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap: 22px;
-}
-
-.reward-card {
-    padding: 12px;
-
-    background: #fff;
-
-    border:
-        1px solid #dce4ef;
-
-    border-radius: 12px;
-
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease;
-}
-
-.reward-card:hover {
-    transform:
-        translateY(-6px);
-
-    box-shadow:
-        0 20px 45px rgba(16,45,92,.12);
-}
-
-.reward-image-box {
-    height: 240px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    overflow: hidden;
-
-    background: #f0f3f8;
-
-    border-radius: 8px;
-}
-
-.reward-image {
-    width: 100%;
-
-    height: 100%;
-
-    padding: 17px;
-
-    object-fit: contain;
-}
-
-.reward-info {
-    padding:
-        17px 5px 8px;
-}
-
-.reward-info h3 {
-    color: var(--navy);
-
-    font-size: 18px;
-
-    font-weight: 900;
-}
-
-.reward-info p {
-    margin-top: 4px;
-
-    color: var(--muted);
-
-    font-size: 11px;
-}
-
-.reward-arrow {
-    display: inline-block;
-
-    margin-top: 13px;
-
-    color: var(--blue);
-
-    font-size: 11px;
-
-    font-weight: 850;
-}
-
-.reward-footer {
-    max-width: 1080px;
-
-    margin:
-        22px auto 0;
-
-    padding:
-        18px 20px;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    border-radius: 8px;
-
-    background: var(--navy);
-
-    color: #fff;
-}
-
-.reward-footer strong {
-    font-size: 12px;
-}
-
-.reward-footer span {
-    color:
-        rgba(255,255,255,.62);
-
-    font-size: 10px;
-}
-
-
-/* =========================================================
-   HOW IT WORKS
-========================================================= */
-
-.steps {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap: 15px;
-}
-
-.step {
-    padding: 30px;
-
-    background: #fff;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 9px;
-
-    transition: .2s;
-}
-
-.step:hover {
-    transform:
-        translateY(-4px);
-
-    box-shadow:
-        var(--shadow);
-}
-
-.step-number {
-    width: 40px;
-    height: 40px;
-
-    margin-bottom: 20px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 7px;
-
-    background: var(--navy);
-
-    color: #8eb6ff;
-
-    font-size: 10px;
-
-    font-weight: 900;
-}
-
-.step h3 {
-    margin-bottom: 7px;
-
-    color: var(--navy);
-
-    font-size: 16px;
-}
-
-.step p {
-    color: var(--muted);
-
-    font-size: 12px;
-}
-
-
-/* =========================================================
-   CTA
-========================================================= */
-
-.cta {
-    padding:
-        70px 25px;
-
-    text-align: center;
-
-    border-radius: 11px;
-
-    background: var(--navy);
-
-    color: #fff;
-
-    box-shadow:
-        0 22px 50px rgba(16,45,92,.14);
-}
-
-.cta h2 {
-    font-size: 38px;
-
-    line-height: 1.1;
-
-    letter-spacing: -2px;
-}
-
-.cta p {
-    max-width: 500px;
-
-    margin:
-        11px auto 27px;
-
-    color:
-        rgba(255,255,255,.62);
-
-    font-size: 13px;
-}
-
-.cta .btn-primary {
-    background: #fff;
-
-    border-color: #fff;
-
-    color: var(--navy);
-
-    box-shadow: none;
-}
-
-
-/* =========================================================
-   FAQ
-========================================================= */
-
-.faq-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap: 15px;
-}
-
-.faq-item {
-    padding: 26px;
-
-    background: #fff;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 9px;
-}
-
-.faq-item h3 {
-    margin-bottom: 8px;
-
-    color: var(--navy);
-
-    font-size: 14px;
-}
-
-.faq-item p {
-    color: var(--muted);
-
-    font-size: 12px;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.footer {
-    background: #0a1d3b;
-
-    color: #fff;
-}
-
-.footer-inner {
-    width:
-        min(100% - 40px,1180px);
-
-    margin: 0 auto;
-
-    padding:
-        28px 0;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-}
-
-.footer-copy,
-.footer-links {
-    color:
-        rgba(255,255,255,.48);
-
-    font-size: 9px;
-}
-
-.footer-links {
-    display: flex;
-
-    gap: 20px;
-}
-
-
-/* =========================================================
-   LAPTOP
-========================================================= */
-
-@media (max-width: 1200px) {
-
-    .hero-copy {
-        max-width: 52%;
-    }
-
-    .hero-title {
-        font-size: 58px;
-    }
-
-    .hero-background {
-        background-position:
-            57% center;
-    }
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 850px) {
-
-    .nav-links {
-        display: none;
-    }
-
-    .hero-copy {
-        max-width: 58%;
-    }
-
-    .hero-title {
-        font-size: 48px;
-
-        letter-spacing: -3px;
-    }
-
-    .hero-description {
-        font-size: 13px;
-    }
-
-    .reward-grid {
-        gap: 12px;
-    }
-
-    .reward-image-box {
-        height: 190px;
-    }
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 650px) {
-
-    /* -----------------------------------------
-       NAVBAR
-    ----------------------------------------- */
-
-    .navbar {
-        height: 92px;
-    }
-
-    .nav-inner {
-        width: 100%;
-
-        padding:
-            0 32px;
-    }
-
-    .logo {
-        font-size: 21px;
-    }
-
-    .logo-mark {
-        width: 40px;
-        height: 40px;
-    }
-
-
-    /* -----------------------------------------
-       HERO
-    ----------------------------------------- */
-
-    .hero {
-        min-height: auto;
-
-        overflow: visible;
-    }
-
-
-    /* -----------------------------------------
-       MOBILE BACKGROUND
-       
-       CHANGED:
-       62% → 70%
-       
-       This shifts the girl LEFT so her face
-       is no longer cut off on the right.
-    ----------------------------------------- */
-
-    .hero-background {
-
-        height: 520px;
-
-        inset:
-            0 0 auto 0;
-
-        background-size:
-            cover;
-
-        background-position:
-            70% center;
-    }
-
-
-    /* -----------------------------------------
-       MOBILE IMAGE FADE
-    ----------------------------------------- */
-
-    .hero-background::after {
-
-        background:
-
-            linear-gradient(
-                to bottom,
-
-                rgba(255,255,255,0) 48%,
-
-                rgba(255,255,255,.60) 75%,
-
-                #ffffff 100%
-            ),
-
-            linear-gradient(
-                90deg,
-
-                rgba(255,255,255,.97) 0%,
-
-                rgba(255,255,255,.86) 28%,
-
-                rgba(255,255,255,.40) 51%,
-
-                rgba(255,255,255,.04) 74%
-            );
-    }
-
-
-    /* -----------------------------------------
-       GRID
-    ----------------------------------------- */
-
-    .hero-grid {
-        height: 520px;
-    }
-
-
-    /* -----------------------------------------
-       HERO CONTENT
-    ----------------------------------------- */
-
-    .hero-inner {
-
-        width: 100%;
-
-        min-height: 520px;
-
-        padding:
-            0 35px;
-
-        display: flex;
-
-        align-items: center;
-    }
-
-
-    /* -----------------------------------------
-       TEXT LEFT OF GIRL
-    ----------------------------------------- */
-
-    .hero-copy {
-
-        width: 58%;
-
-        max-width: 58%;
-
-        margin:
-            35px 0 0;
-    }
-
-
-    /* -----------------------------------------
-       KICKER
-    ----------------------------------------- */
-
-    .hero-kicker {
-
-        margin-bottom: 17px;
-
-        gap: 7px;
-
-        font-size: 7px;
-
-        letter-spacing: 1.15px;
-
-        white-space: nowrap;
-    }
-
-    .hero-kicker-dot {
-
-        width: 7px;
-        height: 7px;
-
-        flex-basis: 7px;
-    }
-
-
-    /* -----------------------------------------
-       MOBILE TITLE
-    ----------------------------------------- */
-
-    .hero-title {
-
-        font-size: 32px;
-
-        line-height: 1.02;
-
-        letter-spacing: -2px;
-    }
-
-    .typing-line {
-
-        min-height: 1.08em;
-
-        margin-top: 4px;
-    }
-
-    .typing-word::after {
-
-        width: 2px;
-
-        margin-left: 3px;
-    }
-
-
-    /* -----------------------------------------
-       DESCRIPTION
-    ----------------------------------------- */
-
-    .hero-description {
-
-        width: 100%;
-
-        margin-top: 14px;
-
-        font-size: 9px;
-
-        line-height: 1.5;
-    }
-
-
-    /* -----------------------------------------
-       CTA BELOW BANNER
-    ----------------------------------------- */
-
-    .hero-actions {
-
-        position: absolute;
-
-        top: 520px;
-
-        left: 0;
-
-        width: 100%;
-
-        padding:
-            14px 35px 0;
-
-        margin: 0;
-
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 10px;
-
-        background: #fff;
-    }
-
-    .btn {
-
-        width: 100%;
-
-        min-height: 55px;
-
-        font-size: 12px;
-    }
-
-
-    /* -----------------------------------------
-       NOTE
-    ----------------------------------------- */
-
-    .hero-note {
-
-        position: absolute;
-
-        top: 654px;
-
-        left: 0;
-
-        width: 100%;
-
-        margin: 0;
-
-        padding:
-            10px 35px 25px;
-
-        background: #fff;
-
-        font-size: 8px;
-    }
-
-
-    /* -----------------------------------------
-       HERO SPACE
-    ----------------------------------------- */
-
-    .hero {
-        padding-bottom: 185px;
-    }
-
-
-    /* -----------------------------------------
-       TRUST
-    ----------------------------------------- */
-
-    .trust-wrap {
-        padding: 0 15px;
-    }
-
-    .trust-strip {
-
-        margin:
-            0 auto;
-
-        grid-template-columns:
-            1fr;
-
-        padding: 18px;
-    }
-
-    .trust-item {
-
-        padding:
-            11px 0;
-
-        border-right: none;
-
-        border-bottom:
-            1px solid var(--border);
-    }
-
-    .trust-item:last-child {
-
-        border-bottom: none;
-    }
-
-
-    /* -----------------------------------------
-       SECTIONS
-    ----------------------------------------- */
-
-    .section {
-
-        width:
-            calc(100% - 36px);
-
-        padding:
-            70px 0;
-    }
-
-    .section-header {
-
-        margin-bottom:
-            30px;
-    }
-
-    .section-header h2 {
-
-        font-size: 30px;
-
-        letter-spacing: -1.5px;
-    }
-
-
-    /* -----------------------------------------
-       REWARDS
-    ----------------------------------------- */
-
-    .rewards-section-wrap {
-
-        margin-top:
-            55px;
-    }
-
-    .reward-grid {
-
-        grid-template-columns:
-            1fr;
-
-        max-width:
-            390px;
-
-        gap:
-            16px;
-    }
-
-    .reward-image-box {
-
-        height:
-            230px;
-    }
-
-    .reward-footer {
-
-        max-width:
-            390px;
-
-        flex-direction:
-            column;
-
-        align-items:
-            flex-start;
-
-        gap:
-            5px;
-    }
-
-
-    /* -----------------------------------------
-       STEPS
-    ----------------------------------------- */
-
-    .steps {
-
-        grid-template-columns:
-            1fr;
-    }
-
-
-    /* -----------------------------------------
-       FAQ
-    ----------------------------------------- */
-
-    .faq-grid {
-
-        grid-template-columns:
-            1fr;
-    }
-
-
-    /* -----------------------------------------
-       CTA
-    ----------------------------------------- */
-
-    .cta {
-
-        padding:
-            55px 20px;
-    }
-
-    .cta h2 {
-
-        font-size:
-            30px;
-
-        letter-spacing:
-            -1.5px;
-    }
-
-
-    /* -----------------------------------------
-       FOOTER
-    ----------------------------------------- */
-
-    .footer-inner {
-
-        flex-direction:
-            column;
-
-        gap:
-            12px;
-
-        text-align:
-            center;
-    }
-}
-
-
-/* =========================================================
-   SMALL PHONES
-========================================================= */
-
-@media (max-width: 390px) {
-
-    .nav-inner {
-        padding:
-            0 25px;
-    }
-
-
-    .hero-background,
-    .hero-grid {
-
-        height:
-            490px;
-    }
-
-
-    /*
-       Keep the slightly-left-shifted image
-       on smaller phones too.
-    */
-
-    .hero-background {
-
-        background-position:
-            70% center;
-    }
-
-
-    .hero-inner {
-
-        min-height:
-            490px;
-
-        padding:
-            0 28px;
-    }
-
-
-    .hero-copy {
-
-        width:
-            60%;
-
-        max-width:
-            60%;
-    }
-
-
-    .hero-title {
-
-        font-size:
-            29px;
-
-        letter-spacing:
-            -1.7px;
-    }
-
-
-    .hero-kicker {
-
-        font-size:
-            6.5px;
-    }
-
-
-    .hero-description {
-
-        font-size:
-            8.5px;
-    }
-
-
-    .hero-actions {
-
-        top:
-            490px;
-
-        padding-left:
-            28px;
-
-        padding-right:
-            28px;
-    }
-
-
-    .hero-note {
-
-        top:
-            624px;
-
-        padding-left:
-            28px;
-
-        padding-right:
-            28px;
-    }
-}
-
-</style>
+                text-align: center;
+            }
+        }
+    </style>
 </head>
-
 
 <body>
 
+<div class="page">
 
-<!-- =========================================================
-     NAVBAR
-========================================================= -->
+    <!-- NAVBAR -->
 
-<nav class="navbar">
+    <nav class="navbar">
+        <div class="nav-inner">
 
-    <div class="nav-inner">
+            <a href="#" class="logo">
 
-        <a href="#" class="logo">
+                <div class="logo-mark">
+                    T
+                </div>
 
-            <div class="logo-mark">
-                T
-            </div>
+                <div class="logo-text">
+                    Task<span>2</span>Get
+                </div>
 
-            <div class="logo-text">
-                Task<span>2</span>Get
-            </div>
-
-        </a>
-
-
-        <div class="nav-links">
-
-            <a href="#rewards">
-                Rewards
-            </a>
-
-            <a href="#how">
-                How It Works
-            </a>
-
-            <a href="#faq">
-                FAQ
-            </a>
-
-            <a
-                href="#how"
-                class="nav-cta"
-            >
-                Start Earning
             </a>
 
         </div>
-
-    </div>
-
-</nav>
+    </nav>
 
 
+    <!-- COMING SOON -->
 
-<!-- =========================================================
-     HERO
-========================================================= -->
+    <main class="coming-soon">
 
-<header class="hero">
+        <div class="content">
 
-    <div class="hero-background"></div>
+            <div class="status">
 
-    <div class="hero-grid"></div>
+                <span class="status-dot"></span>
 
-
-    <div class="hero-inner">
-
-        <div class="hero-copy">
-
-
-            <div class="hero-kicker">
-
-                <span
-                    class="hero-kicker-dot"
-                ></span>
-
-                SIMPLE TASKS · REAL REWARDS
+                Website Under Development
 
             </div>
 
 
-            <h1 class="hero-title">
-
-                <span class="title-line">
-                    Turn spare time
-                </span>
-
-                <span class="title-line">
-                    into something
-                </span>
-
-                <span class="typing-line">
-
-                    <span
-                        class="typing-word"
-                        id="typingText"
-                    >
-                        worth it.
-                    </span>
-
-                </span>
-
+            <h1>
+                Something great
+                <br>
+                is <span>coming soon.</span>
             </h1>
 
 
-            <p class="hero-description">
-
-                Complete simple tasks and work toward
-                digital rewards you actually want.
-
+            <p class="description">
+                We're working behind the scenes to bring
+                Task2Get to life. Soon you'll be able to
+                complete simple tasks and work toward
+                rewards you actually want.
             </p>
 
 
-            <div class="hero-actions">
+            <div class="coming-card">
+
+                <h2>
+                    Task2Get is launching soon.
+                </h2>
+
+                <p>
+                    Our website is currently under development.
+                    Stay tuned — we'll be ready for you shortly.
+                </p>
 
                 <a
-                    href="#how"
-                    class="btn btn-primary"
+                    href="mailto:support@task2get.xyz"
+                    class="button"
                 >
-                    Start Earning →
-                </a>
-
-
-                <a
-                    href="#rewards"
-                    class="btn btn-secondary"
-                >
-                    View Rewards
+                    Contact Us →
                 </a>
 
             </div>
 
+        </div>
 
-            <div class="hero-note">
+    </main>
 
-                <span
-                    class="hero-note-dot"
-                ></span>
 
-                Pick a task. Complete it.
-                Work toward your reward.
+    <!-- FOOTER -->
 
+    <footer class="footer">
+
+        <div class="footer-inner">
+
+            <div class="footer-copy">
+                © 2026 Task2Get. All rights reserved.
             </div>
 
+            <a
+                href="mailto:support@task2get.xyz"
+                class="footer-contact"
+            >
+                support@task2get.xyz
+            </a>
 
         </div>
 
-    </div>
-
-</header>
-
-
-
-<!-- =========================================================
-     TRUST
-========================================================= -->
-
-<div class="trust-wrap">
-
-    <div class="trust-strip">
-
-
-        <div class="trust-item">
-
-            <strong>
-                Simple Tasks
-            </strong>
-
-            <span>
-                Choose what fits your time
-            </span>
-
-        </div>
-
-
-        <div class="trust-item">
-
-            <strong>
-                Clear Requirements
-            </strong>
-
-            <span>
-                Know what to do before starting
-            </span>
-
-        </div>
-
-
-        <div class="trust-item">
-
-            <strong>
-                Reward Choices
-            </strong>
-
-            <span>
-                Work toward what you want
-            </span>
-
-        </div>
-
-
-    </div>
+    </footer>
 
 </div>
-
-
-
-<!-- =========================================================
-     REWARDS
-========================================================= -->
-
-<div
-    class="rewards-section-wrap"
-    id="rewards"
->
-
-<section class="section">
-
-
-    <div class="section-header">
-
-        <span class="section-kicker">
-            Available rewards
-        </span>
-
-        <h2>
-            Pick what you're working toward.
-        </h2>
-
-        <p>
-            Gaming, entertainment, shopping
-            and digital rewards.
-        </p>
-
-    </div>
-
-
-    <div class="reward-grid">
-
-
-        <!-- VALORANT -->
-
-        <div class="reward-card">
-
-            <div class="reward-image-box">
-
-                <img
-                    class="reward-image"
-                    src="https://www.dollargeneral.com/cdn/shop/files/799366502364_1.jpg"
-                    alt="VALORANT Gift Card"
-                >
-
-            </div>
-
-
-            <div class="reward-info">
-
-                <h3>
-                    VALORANT
-                </h3>
-
-                <p>
-                    Gaming rewards
-                </p>
-
-                <span class="reward-arrow">
-                    Work toward it →
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- PLAYSTATION -->
-
-        <div class="reward-card">
-
-            <div class="reward-image-box">
-
-                <img
-                    class="reward-image"
-                    src="https://www.jbhifi.com.au/cdn/shop/files/790464-Product-0-I-638651686203263102_1024x1024.jpg"
-                    alt="PlayStation Gift Card"
-                >
-
-            </div>
-
-
-            <div class="reward-info">
-
-                <h3>
-                    PlayStation
-                </h3>
-
-                <p>
-                    Games & entertainment
-                </p>
-
-                <span class="reward-arrow">
-                    Work toward it →
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- PUBG -->
-
-        <div class="reward-card">
-
-            <div class="reward-image-box">
-
-                <img
-                    class="reward-image"
-                    src="https://onlyonestore.net/wp-content/uploads/2024/09/PUBG-Mobile-Recharge-Voucher-60-to-10500-UC.webp"
-                    alt="PUBG MOBILE Gift Card"
-                >
-
-            </div>
-
-
-            <div class="reward-info">
-
-                <h3>
-                    PUBG MOBILE
-                </h3>
-
-                <p>
-                    UC & gaming rewards
-                </p>
-
-                <span class="reward-arrow">
-                    Work toward it →
-                </span>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-
-    <div class="reward-footer">
-
-        <strong>
-            You do the task. You choose the reward.
-        </strong>
-
-        <span>
-            Reward options may vary by availability.
-        </span>
-
-    </div>
-
-
-</section>
-
-</div>
-
-
-
-<!-- =========================================================
-     HOW IT WORKS
-========================================================= -->
-
-<section
-    class="section"
-    id="how"
->
-
-
-    <div class="section-header">
-
-        <span class="section-kicker">
-            How it works
-        </span>
-
-        <h2>
-            Three simple steps.
-        </h2>
-
-        <p>
-            No complicated process.
-        </p>
-
-    </div>
-
-
-    <div class="steps">
-
-
-        <div class="step">
-
-            <div class="step-number">
-                01
-            </div>
-
-            <h3>
-                Choose a task
-            </h3>
-
-            <p>
-                Browse available opportunities
-                and choose something that fits
-                your time.
-            </p>
-
-        </div>
-
-
-        <div class="step">
-
-            <div class="step-number">
-                02
-            </div>
-
-            <h3>
-                Complete it
-            </h3>
-
-            <p>
-                Follow the task instructions
-                and provide whatever proof
-                is required.
-            </p>
-
-        </div>
-
-
-        <div class="step">
-
-            <div class="step-number">
-                03
-            </div>
-
-            <h3>
-                Get rewarded
-            </h3>
-
-            <p>
-                Once successfully verified,
-                your reward can become available.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     CTA
-========================================================= -->
-
-<section class="section">
-
-    <div class="cta">
-
-        <h2>
-            Make your time worth it.
-        </h2>
-
-        <p>
-            Choose a task, complete it,
-            and work toward something
-            you actually want.
-        </p>
-
-        <a
-            href="#how"
-            class="btn btn-primary"
-        >
-            Start Earning →
-        </a>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     FAQ
-========================================================= -->
-
-<section
-    class="section"
-    id="faq"
->
-
-
-    <div class="section-header">
-
-        <span class="section-kicker">
-            FAQ
-        </span>
-
-        <h2>
-            Before you start.
-        </h2>
-
-    </div>
-
-
-    <div class="faq-grid">
-
-
-        <div class="faq-item">
-
-            <h3>
-                How do I earn rewards?
-            </h3>
-
-            <p>
-                Choose an available task,
-                complete the required steps
-                and submit the requested proof.
-            </p>
-
-        </div>
-
-
-        <div class="faq-item">
-
-            <h3>
-                How are tasks verified?
-            </h3>
-
-            <p>
-                Each task has its own verification
-                requirements. Submissions are
-                checked against those requirements.
-            </p>
-
-        </div>
-
-
-        <div class="faq-item">
-
-            <h3>
-                What can I redeem?
-            </h3>
-
-            <p>
-                Available redemption options
-                depend on the rewards currently offered.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
-<footer class="footer">
-
-    <div class="footer-inner">
-
-
-        <div class="footer-copy">
-
-            © 2026 Task2Get.
-            All rights reserved.
-
-        </div>
-
-
-        <div class="footer-links">
-
-            <a href="#">
-                Privacy
-            </a>
-
-            <a href="#">
-                Terms
-            </a>
-
-            <a href="mailto:support@task2get.xyz">
-                Contact
-            </a>
-
-        </div>
-
-
-    </div>
-
-</footer>
-
-
-
-<!-- =========================================================
-     TYPING ANIMATION
-========================================================= -->
-
-<script>
-
-const typingElement =
-    document.getElementById(
-        "typingText"
-    );
-
-
-const phrases = [
-
-    "worth it.",
-
-    "gaming rewards.",
-
-    "your next reward.",
-
-    "something you want."
-
-];
-
-
-let phraseIndex = 0;
-
-let characterIndex =
-    phrases[0].length;
-
-let deleting = true;
-
-
-function animateTyping() {
-
-    const phrase =
-        phrases[phraseIndex];
-
-
-    /* -----------------------------------------
-       DELETE
-    ----------------------------------------- */
-
-    if (deleting) {
-
-        characterIndex--;
-
-        typingElement.textContent =
-            phrase.substring(
-                0,
-                characterIndex
-            );
-
-
-        if (characterIndex <= 0) {
-
-            deleting = false;
-
-            phraseIndex =
-                (phraseIndex + 1)
-                % phrases.length;
-
-
-            setTimeout(
-                animateTyping,
-                300
-            );
-
-            return;
-        }
-
-
-        setTimeout(
-            animateTyping,
-            42
-        );
-
-        return;
-    }
-
-
-    /* -----------------------------------------
-       TYPE
-    ----------------------------------------- */
-
-    const nextPhrase =
-        phrases[phraseIndex];
-
-
-    characterIndex++;
-
-
-    typingElement.textContent =
-        nextPhrase.substring(
-            0,
-            characterIndex
-        );
-
-
-    if (
-        characterIndex >=
-        nextPhrase.length
-    ) {
-
-        deleting = true;
-
-
-        setTimeout(
-            animateTyping,
-            1700
-        );
-
-        return;
-    }
-
-
-    setTimeout(
-        animateTyping,
-        70
-    );
-}
-
-
-setTimeout(
-    animateTyping,
-    1600
-);
-
-</script>
-
 
 </body>
 </html>
